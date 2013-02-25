@@ -11,8 +11,7 @@
     var $headerButtons = $validChild.find('.G-Ni');
     var $targetContainer = $($headerButtons.get(3));
 
-    var $clone = $targetContainer.contents().clone();
-
+    var $clone = $($targetContainer.contents().get(0)).clone();
     $clone.empty().addClass('gmail')
       .attr('id', buttonId)
       .attr('data-tooltip', addString)
