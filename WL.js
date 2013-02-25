@@ -22,8 +22,6 @@
     data.title = $('meta[name="og:title"]').attr('content');
     data.description = $('meta[name="og:description"]').attr('content');
 
-    console.log(data);
-
     return data;
   }
 
@@ -34,8 +32,6 @@
     data.url = $('meta[name="twitter:url"]').attr('content');
     data.title = $('meta[name="twitter:title"]').attr('content');
     data.description = $('meta[name="twitter:description"]').attr('content');
-
-    console.log(data);
 
     return data;
   }
