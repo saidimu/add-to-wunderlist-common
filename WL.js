@@ -46,8 +46,8 @@
     var twitterCard = fetchTwitterCard();
 
     // build main meta datas - left priority
-    var title = data.title || openGraph.title || twitterCard.title || document.title;
-    var description = openGraph.description || twitterCard.description || $('meta[name="description"]').attr('content');
+    var title = data.title || openGraph.title || twitterCard.title || document.title || '';
+    var description = openGraph.description || twitterCard.description || $('meta[name="description"]').attr('content') || '';
     var url = openGraph.url || twitterCard.url || $('link[rel="canonical"]').attr('href') || window.location.href;
 
     // start building note

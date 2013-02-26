@@ -1,5 +1,11 @@
 (function (WL) {
 
+  if (!WL) {
+
+    window.WL = {};
+    WL = window.WL;
+  }
+
   var addString = 'Add to Wunderlist';
   var buttonId = 'addToWunderlistButton';
 
