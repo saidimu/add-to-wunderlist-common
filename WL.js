@@ -38,6 +38,8 @@
 
   function buildUrl (data) {
 
+    data = data || {};
+
     // Builds url for passing data to wunderlist.com extension frame.
     // Takes passes in data, or defaults to the tabs title and url or text selection in the frame
 
@@ -58,7 +60,7 @@
 
       // append desciption after url in note
       // use selection over description if present
-      note = note + (selection ? " \n\n" + selection : " \n\n" + description);
+      note = (selection ? selection : description) + " \n" + note;
     }
 
     // prepare specialList data if present
@@ -71,7 +73,7 @@
     title = encodeURIComponent(title);
     note = encodeURIComponent(note);
 
-    return data.config.host + '/#/extension/add/' + title + '/' + note;
+    return config.host + '/#/extension/add/' + title + '/' + note;
   }
 
   // exports
