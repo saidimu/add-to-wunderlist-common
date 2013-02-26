@@ -115,8 +115,22 @@
     margin-right: 6px;
 }
 
+#addToWunderlistButton.asos {
+
+  margin: 12px 100px 0 0;
+  float: right;
+}
+
 #addToWunderlistButton.youtube {
 
+  cursor: pointer;
+  border-radius: 2px;
+  margin-left: 13px;
+  font-size: 12px;
+  vertical-align: middle;
+  padding: 4px 13px;
+  border: 1px solid #aaa;
+  display: inline;
 }
 
 #addToWunderlistButton.youtube span.wunderlist-icon {
@@ -126,4 +140,8 @@
   background: url(https://www.wunderlist.com/icon.png);
   background-size: 16px;
   margin: 3px 0px 0 3px;
+
+  position: relative;
+  left: -8px;
+  top: 4px;
 }

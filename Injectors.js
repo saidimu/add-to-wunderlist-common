@@ -9,6 +9,22 @@
   var addString = 'Add to Wunderlist';
   var buttonId = 'addToWunderlistButton';
 
+  function generateGenericButton (className, element) {
+
+    className = className || 'generic-button';
+    element = element || '<div/>';
+
+    var $button = $(element).addClass(className)
+      .attr('id', buttonId)
+      .text(addString);
+
+    var $icon = $('<span/>').addClass('wunderlist-icon');
+
+    $button.prepend($icon);
+
+    return $button;
+  }
+
   function gmailQuickAdd () {
 
     // these classes may change, not sure how long they last on gmail
@@ -78,8 +94,6 @@
       .attr('data-action', '')
       .text('Wunderlist');
 
-    console.log($cloneTarget, $('#btn-msg-actions'));
-
     $('#btn-msg-actions:visible').after($clone);
 
     $('#' + buttonId).on('click', function () {
@@ -101,14 +115,7 @@
   function amazonQuickAdd () {
 
     var $targetContainer = $('.buyingDetailsGrid');
-    var $button = $('<div/>').addClass('amazon')
-      .attr('id', buttonId)
-      .text(addString);
-
-    var $icon = $('<span/>').addClass('wunderlist-icon');
-
-    $button.prepend($icon);
-
+    var $button = generateGenericButton('amazon');
     $targetContainer.prepend($button);
 
     $('#' + buttonId).on('click', function (ev) {
@@ -132,14 +139,7 @@
   function imdbQuickAdd () {
 
     var $targetContainer = $('#img_primary');
-    var $button = $('<div/>').addClass('imdb btn2 large primary')
-      .attr('id', buttonId)
-      .text(addString);
-
-    var $icon = $('<span/>').addClass('wunderlist-icon');
-
-    $button.prepend($icon);
-
+    var $button = generateGenericButton('imdb btn2 large primary');
     $targetContainer.append($button);
 
     $('#' + buttonId).on('click', function (ev) {
@@ -166,18 +166,9 @@
 
   function youtubeQuickAdd () {
 
-    var $targetContainer = $('#watch7-user-header');
-    var $cloneTarget = $($('.yt-uix-button-subscription-container:visible').get(0));
-
-    var $button = $('<span/>').addClass('youtube')
-      .attr('id', buttonId)
-      .text(addString);
-
-    var $icon = $('<span/>').addClass('wunderlist-icon');
-
-    $button.prepend($icon);
-
-    $cloneTarget.after($button);
+    var $target = $('.yt-uix-button-subscription-container:visible');
+    var $button = generateGenericButton('youtube');
+    $target.after($button);
 
     $('#' + buttonId).on('click', function (ev) {
 
@@ -200,13 +191,8 @@
 
   function wikipediaQuickAdd () {
 
-    $target = $('#siteSub');
-    var $button = $('<div/>').addClass('wikipedia')
-      .attr('id', buttonId)
-      .text(addString);
-
-    var $icon = $('<span/>').addClass('wunderlist-icon');
-
+    var $target = $('#siteSub');
+    var $button = generateGenericButton('wikipedia');
     $target.after($button);
 
     $('#' + buttonId).on('click', function (ev) {
@@ -226,14 +212,8 @@
 
   function ebayQuickAdd () {
 
-    $targetContainer = $('#dd_addToList');
-
-    var $button = $('<div/>').addClass('ebay')
-      .attr('id', buttonId)
-      .text(addString);
-
-    var $icon = $('<span/>').addClass('wunderlist-icon');
-
+    var $targetContainer = $('#dd_addToList');
+    var $button = generateGenericButton('ebay');
     $targetContainer.append($button);
 
     $('#' + buttonId).on('click', function (ev) {
@@ -254,14 +234,8 @@
 
   function asosQuickAdd () {
 
-    var $targetContainer = $('#variants');
-
-    var $button = $('<div/>').addClass('asos')
-      .attr('id', buttonId)
-      .text(addString);
-
-    var $icon = $('<span/>').addClass('wunderlist-icon');
-
+    var $targetContainer = $($('#variants, .product-buttons').get(0));
+    var $button = generateGenericButton('asos button small grey', '<a/>');
     $targetContainer.append($button);
 
     $('#' + buttonId).on('click', function (ev) {
@@ -270,7 +244,7 @@
       var openGraph = WL.fetchOpenGraph();
 
       data.title = openGraph.title;
-      data.note = openGraph.description + " ... \n" + openGraph.url;
+      data.note = $.trim(($('#infoAndCare').text() || openGraph.description)).substring(0, 500) + " ... \n" + openGraph.url;
       data.specialList = 'wishlist';
       WL.showOverlay(data);
       return false;
@@ -282,14 +256,8 @@
 
   function etsyQuickAdd () {
 
-    $targetContainer = $('.item-actions');
-
-    var $button = $('<div/>').addClass('etsy')
-      .attr('id', buttonId)
-      .text(addString);
-
-    var $icon = $('<span/>').addClass('wunderlist-icon');
-
+    var $targetContainer = $('.item-actions');
+    var $button = generateGenericButton('etsy');
     $targetContainer.append($button);
 
     $('#' + buttonId).on('click', function (ev) {
@@ -358,7 +326,6 @@
     }
     else if (/\.etsy\./.test(host)) {
 
-      console.log('here');
       etsyQuickAdd();
     }
   }
@@ -373,7 +340,6 @@
 
     if (lastLocation !== host + path + search + hash) {
 
-      console.log('changed');
       lastLocation = host + path + search + hash;
       injectQuickAddLink();
     }
