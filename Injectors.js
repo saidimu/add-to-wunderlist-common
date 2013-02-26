@@ -219,7 +219,7 @@
 
     $targetContainer = $('#dd_addToList');
 
-    var $button = $('<div/>').addClass('wikipedia')
+    var $button = $('<div/>').addClass('ebay')
       .attr('id', buttonId)
       .text(addString);
 
@@ -234,6 +234,62 @@
 
       data.title = openGraph.title;
       data.note = openGraph.description + " ... \n" + openGraph.url;
+      data.specialList = 'wishlist';
+      WL.showOverlay(data);
+      return false;
+    }).on('submit', function () {
+
+      return false;
+    });
+  }
+
+  function asosQuickAdd () {
+
+    var $targetContainer = $('#variants');
+
+    var $button = $('<div/>').addClass('asos')
+      .attr('id', buttonId)
+      .text(addString);
+
+    var $icon = $('<span/>').addClass('wunderlist-icon');
+
+    $targetContainer.append($button);
+
+    $('#' + buttonId).on('click', function (ev) {
+
+      var data = {};
+      var openGraph = WL.fetchOpenGraph();
+
+      data.title = openGraph.title;
+      data.note = openGraph.description + " ... \n" + openGraph.url;
+      data.specialList = 'wishlist';
+      WL.showOverlay(data);
+      return false;
+    }).on('submit', function () {
+
+      return false;
+    });
+  }
+
+  function etsyQuickAdd () {
+
+    $targetContainer = $('.item-actions');
+
+    var $button = $('<div/>').addClass('etsy')
+      .attr('id', buttonId)
+      .text(addString);
+
+    var $icon = $('<span/>').addClass('wunderlist-icon');
+
+    $targetContainer.append($button);
+
+    $('#' + buttonId).on('click', function (ev) {
+
+      var data = {};
+      var openGraph = WL.fetchOpenGraph();
+
+      data.title = ($('.title-module:visible').text() || openGraph.title);
+      data.note = ($.trim($('.description-item:visible .description').text()).substring(0, 500) || openGraph.description) + " ... \n" + (openGraph.url || window.location.href);
       data.specialList = 'wishlist';
       WL.showOverlay(data);
       return false;
@@ -287,18 +343,29 @@
 
       ebayQuickAdd();
     }
+    else if (/\.asos\./.test(host)) {
+
+      asosQuickAdd();
+    }
+    else if (/\.etsy\./.test(host)) {
+
+      console.log('here');
+      etsyQuickAdd();
+    }
   }
 
-  var lastLocation = window.location.hostname + window.location.search + window.location.hash;
+  var lastLocation = window.location.hostname + window.location.pathname + window.location.search + window.location.hash;
   function checkLocation () {
 
     var host = window.location.hostname;
+    var path = window.location.pathname;
     var hash = window.location.hash;
     var search = window.location.search;
 
-    if (lastLocation !== host + search + hash) {
+    if (lastLocation !== host + path + search + hash) {
 
-      lastLocation = host + search + hash;
+      console.log('changed');
+      lastLocation = host + path + search + hash;
       injectQuickAddLink();
     }
   }
