@@ -69,6 +69,7 @@
 
     var $cloneTarget = $('.btn-spam:visible');
     var $clone = $cloneTarget.clone().attr('id', 'wunderlist-container')
+      .addClass('yahoo')
       .removeClass('btn-spam');
 
     $clone.find('a').attr('id', buttonId)
@@ -77,14 +78,22 @@
       .attr('data-action', '')
       .text('Wunderlist');
 
-    $('.btn-msg-actions:visible').after($clone);
+    console.log($cloneTarget, $('#btn-msg-actions'));
+
+    $('#btn-msg-actions:visible').after($clone);
 
     $('#' + buttonId).on('click', function () {
 
       var data = {};
 
-      data.title = $('.info > h3').text();
-      data.note = $('.msg-body.inner').text();
+      var $titleClone = $('.info:visible > h3').clone();
+      $titleClone.find('style').remove();
+
+      var $msgClone = $('.msg-body.inner:visible').clone();
+      $msgClone.find('style, script, meta').remove();
+
+      data.title = $.trim($titleClone.text());
+      data.note = $.trim($msgClone.text());
       WL.showOverlay(data);
     });
   }
