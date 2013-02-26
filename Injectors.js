@@ -177,8 +177,12 @@
 
       var data = {};
 
-      data.title = $('meta[name="title"]').attr('content');
-      data.note = $('meta[name="description"]').attr('content') + " \n" + $('link[rel="canonical"]').attr('href');
+      var openGraph = WL.fetchOpenGraph();
+
+      console.log(openGraph);
+
+      data.title = openGraph.title;
+      data.note = openGraph.description + " \n" + openGraph.url;
       data.specialList = 'movies';
       WL.showOverlay(data);
       return false;

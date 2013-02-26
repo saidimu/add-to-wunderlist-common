@@ -18,9 +18,9 @@
 
     var data = {};
 
-    data.url = $('meta[name="og:url"]').attr('content');
-    data.title = $('meta[name="og:title"]').attr('content');
-    data.description = $('meta[name="og:description"]').attr('content');
+    data.url = $('meta[name="og:url"]').attr('content') || $('meta[property="og:url"]').attr('content');
+    data.title = $('meta[name="og:title"]').attr('content') || $('meta[property="og:title"]').attr('content');
+    data.description = $('meta[name="og:description"]').attr('content') || $('meta[property="og:description"]').attr('content');
 
     return data;
   }
