@@ -121,6 +121,17 @@
   float: right;
 }
 
+#addToWunderlistButton.asos span.wunderlist-icon {
+
+  margin: 0 10px 0 0;
+  vertical-align: bottom;
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+  background: url(https://www.wunderlist.com/icon.png);
+  background-size: 14px;
+}
+
 #addToWunderlistButton.youtube {
 
   cursor: pointer;
@@ -144,4 +155,13 @@
   position: relative;
   left: -8px;
   top: 4px;
+}
+
+#addToWunderlistButton.ebay {
+  cursor: pointer;
+  background: #FFF;
+  margin-top: 10px;
+  padding: 2px 14px;
+  border: 1px solid #999;
+  float: left;
 }
