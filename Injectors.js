@@ -34,7 +34,6 @@
 
       var data = {};
 
-      data.config = WL.config;
       data.title = window.title;
       WL.showOverlay(data);
     });
@@ -60,7 +59,6 @@
 
       var data = {};
 
-      data.config = WL.config;
       data.title = $('.ReadMsgSubject').text();
       data.note = $('.ReadMsgBody').text();
       WL.showOverlay(data);
@@ -85,7 +83,6 @@
 
       var data = {};
 
-      data.config = WL.config;
       data.title = $('.info > h3').text();
       data.note = $('.msg-body.inner').text();
       WL.showOverlay(data);
@@ -112,9 +109,8 @@
 
       var data = {};
 
-      data.config = WL.config;
-      data.title = $('meta[name="title"]').text();
-      data.note = $('link[rel="canonical"]').text();
+      data.title = $('meta[name="title"]').attr('content');
+      data.note = $('meta[name="description"]').attr('content') + " \n" + $('link[rel="canonical"]').attr('href');
       data.specialList = 'wishlist';
       WL.showOverlay(data);
       return false;
@@ -143,13 +139,12 @@
       ev.preventDefault();
 
       var data = {};
-      data.config = WL.config;
 
       var stars = $.trim($('.star-box-giga-star').text());
       stars = stars.length ? ' [' + stars + ']' : '';
 
       data.title = $('h1 .itemprop').text() + stars;
-      data.note = $('link[rel="canonical"]').attr('href') + "\n\n" + $.trim($('p[itemprop="description"]').text());
+      data.note = $.trim($('p[itemprop="description"]').text()) + " \n" + $('link[rel="canonical"]').attr('href');
       data.specialList = 'movies';
 
       WL.showOverlay(data);

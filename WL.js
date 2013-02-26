@@ -40,6 +40,8 @@
 
     data = data || {};
 
+    console.log(data);
+
     // Builds url for passing data to wunderlist.com extension frame.
     // Takes passes in data, or defaults to the tabs title and url or text selection in the frame
 
@@ -55,6 +57,7 @@
     // start building note
     var note = data.note || url;
     var selection = window.getSelection().toString();
+
     // if not passed in note data use a default constructor
     if (!data.note) {
 
@@ -76,8 +79,18 @@
     return config.host + '/#/extension/add/' + title + '/' + note;
   }
 
+  function buildCss (options) {
+
+    // Create styles for overlay
+    var transitionSpeed = options && options.transitionSpeed || 500;
+    var opacity = options && options.opacity || 0;
+
+    return 'opacity:' + opacity + ';-webkit-transition:opacity ' + transitionSpeed + 'ms linear;';
+  }
+
   // exports
   WL.buildUrl = buildUrl;
+  WL.buildCss = buildCss;
   WL.config = config;
 
 })(window.WL);
