@@ -206,7 +206,6 @@
 
       data.title = document.title;
       data.note = $.trim($('#mw-content-text').text()).substring(0, 500) + " ... \n" + window.location.href;
-      data.specialList = 'movies';
       WL.showOverlay(data);
       return false;
     }).on('submit', function () {
@@ -214,6 +213,34 @@
       return false;
     });
 
+  }
+
+  function ebayQuickAdd () {
+
+    $targetContainer = $('#dd_addToList');
+
+    var $button = $('<div/>').addClass('wikipedia')
+      .attr('id', buttonId)
+      .text(addString);
+
+    var $icon = $('<span/>').addClass('wunderlist-icon');
+
+    $targetContainer.append($button);
+
+    $('#' + buttonId).on('click', function (ev) {
+
+      var data = {};
+      var openGraph = WL.fetchOpenGraph();
+
+      data.title = openGraph.title;
+      data.note = openGraph.description + " ... \n" + openGraph.url;
+      data.specialList = 'wishlist';
+      WL.showOverlay(data);
+      return false;
+    }).on('submit', function () {
+
+      return false;
+    });
   }
 
   function injectQuickAddLink () {
@@ -255,6 +282,10 @@
     else if (/wikipedia\.org/.test(host)) {
 
       wikipediaQuickAdd();
+    }
+    else if (/ebay\.com/.test(host)) {
+
+      ebayQuickAdd();
     }
   }
 
