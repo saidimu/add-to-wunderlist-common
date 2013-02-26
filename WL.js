@@ -89,6 +89,8 @@
   }
 
   // exports
+  WL.fetchOpenGraph = fetchOpenGraph;
+  WL.fetchTwitterCard = fetchTwitterCard;
   WL.buildUrl = buildUrl;
   WL.buildCss = buildCss;
   WL.config = config;

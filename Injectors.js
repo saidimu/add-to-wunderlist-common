@@ -155,6 +155,39 @@
     });
   }
 
+  function youtubeQuickAdd () {
+
+    var $targetContainer = $('#watch7-user-header');
+    var $cloneTarget = $($('.yt-uix-button-subscription-container:visible').get(0));
+
+    var $button = $('<span/>').addClass('youtube')
+      .attr('id', buttonId)
+      .text(addString);
+
+    var $icon = $('<span/>').addClass('wunderlist-icon');
+
+    $button.prepend($icon);
+
+    $cloneTarget.after($button);
+
+    $('#' + buttonId).on('click', function (ev) {
+
+      ev.stopPropagation();
+      ev.preventDefault();
+
+      var data = {};
+
+      data.title = $('meta[name="title"]').attr('content');
+      data.note = $('meta[name="description"]').attr('content') + " \n" + $('link[rel="canonical"]').attr('href');
+      data.specialList = 'movies';
+      WL.showOverlay(data);
+      return false;
+    }).on('submit', function () {
+
+      return false;
+    });
+  }
+
   function injectQuickAddLink () {
 
     var host = window.location.hostname;
@@ -186,6 +219,10 @@
     else if (/imdb\./.test(host)) {
 
       imdbQuickAdd();
+    }
+    else if (/youtube\.com/.test(host)) {
+
+      youtubeQuickAdd();
     }
   }
 

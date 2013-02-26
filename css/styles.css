@@ -27,7 +27,7 @@
   top: 5px;
   left: 14px;
   position: absolute;
-  background: url('http://www.wunderlist.com/icon.png');
+  background: url(https://www.wunderlist.com/icon.png);
   height: 16px;
   width: 16px;
   display: inline-block;
@@ -45,7 +45,7 @@
   top: 4px;
   left: -5px;
   position: relative;
-  background: url(http://www.wunderlist.com/icon.png);
+  background: url(https://www.wunderlist.com/icon.png);
   height: 16px;
   width: 16px;
   display: inline-block;
@@ -91,7 +91,7 @@
   float:left;
   height:24px;
   width:24px;
-  background: url(http://www.wunderlist.com/icon.png);
+  background: url(https://www.wunderlist.com/icon.png);
   background-size: 24px;
   margin-left:10px;
   margin-top:-2px;
@@ -109,8 +109,21 @@
     float:left;
     height:16px;
     width:16px;
-    background: url(http://www.wunderlist.com/icon.png);
+    background: url(https://www.wunderlist.com/icon.png);
     background-size: 16px;
     margin-top: 6px;
     margin-right: 6px;
+}
+
+#addToWunderlistButton.youtube {
+
+}
+
+#addToWunderlistButton.youtube span.wunderlist-icon {
+  display: inline-block;
+  height:16px;
+  width:16px;
+  background: url(https://www.wunderlist.com/icon.png);
+  background-size: 16px;
+  margin: 3px 0px 0 3px;
 }
