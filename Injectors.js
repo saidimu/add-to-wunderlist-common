@@ -176,10 +176,7 @@
       ev.preventDefault();
 
       var data = {};
-
       var openGraph = WL.fetchOpenGraph();
-
-      console.log(openGraph);
 
       data.title = openGraph.title;
       data.note = openGraph.description + " \n" + openGraph.url;
@@ -190,6 +187,33 @@
 
       return false;
     });
+  }
+
+  function wikipediaQuickAdd () {
+
+    $target = $('#siteSub');
+    var $button = $('<div/>').addClass('wikipedia')
+      .attr('id', buttonId)
+      .text(addString);
+
+    var $icon = $('<span/>').addClass('wunderlist-icon');
+
+    $target.after($button);
+
+    $('#' + buttonId).on('click', function (ev) {
+
+      var data = {};
+
+      data.title = document.title;
+      data.note = $.trim($('#mw-content-text').text()).substring(0, 500) + " ... \n" + window.location.href;
+      data.specialList = 'movies';
+      WL.showOverlay(data);
+      return false;
+    }).on('submit', function () {
+
+      return false;
+    });
+
   }
 
   function injectQuickAddLink () {
@@ -227,6 +251,10 @@
     else if (/youtube\.com/.test(host)) {
 
       youtubeQuickAdd();
+    }
+    else if (/wikipedia\.org/.test(host)) {
+
+      wikipediaQuickAdd();
     }
   }
 
