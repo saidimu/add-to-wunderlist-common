@@ -7,7 +7,7 @@
     'host': 'http://localhost:5000'
   };
 
-  // get it started in here
+  // modules can be imported individually for different extensions, but all will export onto window.WL
   if (!WL) {
 
     window.WL = {};
