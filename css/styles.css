@@ -55,14 +55,14 @@
   background-size: 16px !important;
 }
 
-#wunderlist-container {
+/* yahoo mail */
+
+#addToWunderlistButton.yahoo {
 
   background-image: none !important;
 }
 
-/* yahoo mail */
-
-#wunderlist-container span.wunderlist-icon {
+#addToWunderlistButton.yahoo span.wunderlist-icon {
 
   left: 3px;
   top: 5px;

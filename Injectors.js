@@ -99,13 +99,13 @@
   function yahooQuickAdd () {
 
     var $cloneTarget = $('.btn-spam:visible');
-    var $clone = $cloneTarget.clone().attr('id', 'wunderlist-container')
+    var $clone = $cloneTarget.clone().attr('id', buttonId)
       .addClass('yahoo')
       .removeClass('btn-spam');
 
     $clone.prepend($('<span/>').addClass('wunderlist-icon'));
 
-    $clone.find('a').attr('id', buttonId)
+    $clone.find('a')
       .addClass('yahoo')
       .attr('title', addString)
       .attr('data-action', '')
@@ -113,7 +113,7 @@
 
     $('#btn-msg-actions:visible').after($clone);
 
-    $('#' + buttonId).on('click', function () {
+    $('#' + buttonId + ' a.yahoo').on('click', function () {
 
       var data = {};
 
