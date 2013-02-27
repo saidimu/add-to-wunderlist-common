@@ -25,6 +25,11 @@
 
       frame.onload = function () {
 
+        $('body').css({
+
+          'overflow': 'hidden'
+        });
+
         frame.style.opacity = 1;
 
         setTimeout(function () {
@@ -49,6 +54,11 @@
 
             frame.src = 'about:blank';
             frame.onload = function () {
+
+              $('body').css({
+
+                'overflow': ''
+              });
 
               window.removeEventListener('message', close, false);
               frame.parentNode.removeChild(frame);
