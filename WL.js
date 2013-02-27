@@ -1,5 +1,10 @@
 (function (WL) {
 
+  if (window.top !== window.top) {
+
+    return;
+  }
+
   // common config
   var config = {
 

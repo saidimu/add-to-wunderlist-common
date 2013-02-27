@@ -1,5 +1,10 @@
 (function (WL) {
 
+  if (window.top !== window.top) {
+
+    return;
+  }
+
   if (!WL) {
 
     window.WL = {};
@@ -319,6 +324,12 @@
     else if (/mail\.yahoo\.com/.test(host)) {
 
       yahooQuickAdd();
+
+      // hax since yahoo does not use stateful url changes at all
+      $('body').off('click').on('click', function () {
+
+        window.setTimeout(injectQuickAddLink, 500);
+      });
     }
     else if (/amazon\./.test(host)) {
 
