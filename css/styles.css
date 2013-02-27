@@ -14,52 +14,49 @@
   -webkit-transition: opacity 50ms linear !important;
 }
 
-/* Gmail Button */
+#addToWunderlistButton {
+  cursor: pointer !important;
+}
+
+#addToWunderlistButton span.wunderlist-icon {
+  background: url(https://www.wunderlist.com/icon.png) !important;
+  display:inline-block !important;
+  background-size: 16px !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* GMAIL */
 
 #addToWunderlistButton.gmail {
-
   padding-right: 14px !important;
   padding-left: 35px !important;
 }
 
-#addToWunderlistButton.gmail span.wunderlist-icon {
-
-  top: 5px !important;
-  left: 14px !important;
-  position: absolute !important;
-  background: url(https://www.wunderlist.com/icon.png) !important;
-  height: 16px !important;
-  width: 16px !important;
-  display: inline-block !important;
-  background-size: 16px !important;
-}
-
 #addToWunderlistButton.gmail:hover {
-
   border-color:#C6C6C6 !important;
   box-shadow:0 1px 2px rgba(0,0,0,0.1) !important;
 }
 
-/* Outlook Button */
+#addToWunderlistButton.gmail span.wunderlist-icon {
+  top: 5px !important;
+  left: 14px !important;
+  position: absolute !important;
+}
+
+/* OUTLOOK */
 
 #addToWunderlistButton.outlook span.wunderlist-icon {
-
-  top: 4px !important;
-  left: -5px !important;
-  position: relative !important;
-  background: url(https://www.wunderlist.com/icon.png) !important;
-  height: 16px !important;
-  width: 16px !important;
-  display: inline-block !important;
-  background-size: 16px !important;
+  margin-top: 12px !important;
+  float: left;
+  margin-right: 6px;
 }
+
+/* YAHOO MAIL */
 
 #wunderlist-container {
-
   background-image: none !important;
 }
-
-/* yahoo mail */
 
 #wunderlist-container span.wunderlist-icon {
 
@@ -72,10 +69,9 @@
   position: absolute;
 }
 
-/* Amazon Button */
+/* AMAZON */
 
 #addToWunderlistButton.amazon {
-
   -webkit-font-smoothing:antialiased !important;
   padding: 10px 0 !important;
   margin-bottom: 10px !important;
@@ -105,84 +101,102 @@
 }
 
 #addToWunderlistButton.amazon span.wunderlist-icon {
-
   float:left !important;
   height:24px !important;
   width:24px !important;
-  background: url(https://www.wunderlist.com/icon.png) !important;
   background-size: 24px !important;
   margin-left:10px !important;
   margin-top:-2px !important;
 }
 
-/* IMDB Button */
-#addToWunderlistButton.imdb {
+/* IMDB */
 
+#addToWunderlistButton.imdb {
   padding:0 8px !important;
-  margin: 37px 0 0 0 !important;
-  float: right !important;
+  margin: 15px 0 0 0 !important;
+  float: left !important;
 }
 
 #addToWunderlistButton.imdb span.wunderlist-icon {
-  
-    float:left !important;
-    height:16px !important;
-    width:16px !important;
-    background: url(https://www.wunderlist.com/icon.png) !important;
-    background-size: 16px !important;
-    margin-top: 6px !important;
-    margin-right: 6px !important;
+  float:left !important;
+  margin-top: 6px !important;
+  margin-right: 6px !important;
 }
 
-#addToWunderlistButton.asos {
+/* ASOS */
 
+#addToWunderlistButton.asos {
   margin: 12px 100px 0 0 !important;
   float: right !important;
 }
 
 #addToWunderlistButton.asos span.wunderlist-icon {
-
-  margin: 0 10px 0 0 !important;
+  margin: 1px 10px -1px 0 !important;
   vertical-align: bottom !important;
   display: inline-block !important;
   height: 14px !important;
   width: 14px !important;
-  background: url(https://www.wunderlist.com/icon.png) !important;
   background-size: 14px !important;
 }
 
-#addToWunderlistButton.youtube {
+/* YOUTUBE */
 
-  cursor: pointer !important;
-  border-radius: 2px !important;
-  margin-left: 13px !important;
-  font-size: 12px !important;
-  vertical-align: middle !important;
-  padding: 4px 13px !important;
-  border: 1px solid #aaa !important;
-  display: inline !important;
+#addToWunderlistButton.youtube {
+  display:inline-block;
+  color:#333;
+  text-shadow:0 1px 0 white;
+  font-weight:bold;
+  vertical-align:top;
+  height:auto;
+  margin-left: 10px;
+  padding: 6px 6px 5px 30px;
+  position: relative;
 }
 
 #addToWunderlistButton.youtube span.wunderlist-icon {
-
-  display: inline-block !important;
-  height:16px !important;
-  width:16px !important;
-  background: url(https://www.wunderlist.com/icon.png) !important;
-  background-size: 16px !important;
-  margin: 3px 0px 0 3px !important;
-
-  position: relative !important;
-  left: -8px !important;
-  top: 4px !important;
+  position:absolute;
+  left:6px;
+  top:3px;
 }
 
-#addToWunderlistButton.ebay {
+/* EBAY */
 
-  cursor: pointer !important;
-  background: #FFF !important;
-  margin-top: 10px !important;
-  padding: 2px 14px !important;
-  border: 1px solid #999 !important;
-  float: left !important;
+#addToWunderlistButton.ebay {
+  position: relative;
+  height:17px;
+  width:17px;
+  overflow: hidden;
+  top: -20px;
+  left: -17px;
+}
+
+#addToWunderlistButton.ebay span.wunderlist-icon {
+  height: 17px !important;
+  width: 17px !important;
+  background-size: 17px !important;
+}
+
+/* WIKIPEDIA */
+
+#addToWunderlistButton.wikipedia {
+  margin-top:5px;
+}
+
+#addToWunderlistButton.wikipedia span.wunderlist-icon {
+  float:left;
+  margin-right:5px;
+}
+
+/* ETSY */
+
+#addToWunderlistButton.etsy{
+  color:#888;
+  padding:0 9px 0 29px;
+}
+
+#addToWunderlistButton.etsy span.wunderlist-icon {
+  padding:0 !important;
+  position: absolute;
+  left: 7px;
+  top: 3px;
 }

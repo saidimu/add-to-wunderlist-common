@@ -140,7 +140,7 @@
 
   function imdbQuickAdd () {
 
-    var $targetContainer = $('#img_primary');
+    var $targetContainer = $('#overview-bottom');
     var $button = generateGenericButton('imdb btn2 large primary');
     $targetContainer.append($button);
 
@@ -169,7 +169,7 @@
   function youtubeQuickAdd () {
 
     var $target = $('.yt-uix-button-subscription-container:visible');
-    var $button = generateGenericButton('youtube');
+    var $button = generateGenericButton('youtube yt-uix-button-subscribe-branded');
     $target.after($button);
 
     $('#' + buttonId).on('click', function (ev) {
@@ -214,7 +214,7 @@
 
   function ebayQuickAdd () {
 
-    var $targetContainer = $('#dd_addToList');
+    var $targetContainer = $('#ebayShare_1');
     var $button = generateGenericButton('ebay');
     $targetContainer.append($button);
 
@@ -258,8 +258,8 @@
 
   function etsyQuickAdd () {
 
-    var $targetContainer = $('.item-actions');
-    var $button = generateGenericButton('etsy');
+    var $targetContainer = $('#secondary-actions');
+    var $button = generateGenericButton('etsy button-fave');
     $targetContainer.append($button);
 
     $('#' + buttonId).on('click', function (ev) {
@@ -318,7 +318,7 @@
 
       wikipediaQuickAdd();
     }
-    else if (/ebay\.com/.test(host)) {
+    else if (/ebay\./.test(host)) {
 
       ebayQuickAdd();
     }
