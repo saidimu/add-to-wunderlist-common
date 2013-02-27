@@ -2,166 +2,174 @@
 
 #wunderlist_overlay {
 
-  border: none;
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  z-index: 99999999;
-  top: 0px;
-  left: 0px;
-  opacity: 1;
-  display: block;
-  -webkit-transition: opacity 50ms linear;
+  border: none !important;
+  height: 100% !important;
+  width: 100% !important;
+  position: fixed !important;
+  z-index: 99999999 !important;
+  top: 0px !important;
+  left: 0px !important;
+  opacity: 1 !important;
+  display: block !important;
+  -webkit-transition: opacity 50ms linear !important;
 }
 
 /* Gmail Button */
 
 #addToWunderlistButton.gmail {
 
-  padding-right: 14px;
-  padding-left: 35px;
+  padding-right: 14px !important;
+  padding-left: 35px !important;
 }
 
 #addToWunderlistButton.gmail span.wunderlist-icon {
 
-  top: 5px;
-  left: 14px;
-  position: absolute;
-  background: url(https://www.wunderlist.com/icon.png);
-  height: 16px;
-  width: 16px;
-  display: inline-block;
-  background-size: 16px;
+  top: 5px !important;
+  left: 14px !important;
+  position: absolute !important;
+  background: url(https://www.wunderlist.com/icon.png) !important;
+  height: 16px !important;
+  width: 16px !important;
+  display: inline-block !important;
+  background-size: 16px !important;
 }
 
 #addToWunderlistButton.gmail:hover {
-  border-color:#C6C6C6;
-  box-shadow:0 1px 2px rgba(0,0,0,0.1);
+
+  border-color:#C6C6C6 !important;
+  box-shadow:0 1px 2px rgba(0,0,0,0.1) !important;
 }
 
 /* Outlook Button */
 
 #addToWunderlistButton.outlook span.wunderlist-icon {
-  top: 4px;
-  left: -5px;
-  position: relative;
-  background: url(https://www.wunderlist.com/icon.png);
-  height: 16px;
-  width: 16px;
-  display: inline-block;
-  background-size: 16px;
+
+  top: 4px !important;
+  left: -5px !important;
+  position: relative !important;
+  background: url(https://www.wunderlist.com/icon.png) !important;
+  height: 16px !important;
+  width: 16px !important;
+  display: inline-block !important;
+  background-size: 16px !important;
 }
 
 #wunderlist-container {
+
   background-image: none !important;
 }
 
 /* Amazon Button */
 
 #addToWunderlistButton.amazon {
-  -webkit-font-smoothing:antialiased;
-  padding: 10px 0;
-  margin-bottom: 10px;
-  font-family: "Helvetica Neue","Helvetica","Arial",Sans-Serif;
-  cursor: pointer;
-  text-align: center;
-  width: 100%;
-  background: #5cb6e7;
-  background: -webkit-gradient(linear,left top,left bottom,from(#5cb6e7),to(#317cd7));
-  background: -moz-linear-gradient(top,#5cb6e7,#317cd7);
-  background: -ms-linear-gradient(top,#5cb6e7,#317cd7);
-  background: linear-gradient(top,#5cb6e7,#317cd7);
-  color: white;
-  font-weight: bold;
-  border:1px solid #0C67A5;
-  text-shadow: 0 1px 0 rgba(0,0,0,0.5);
-  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
-  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
-  -ms-box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
-  -o-box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
-  border-radius: 4px;
+
+  -webkit-font-smoothing:antialiased !important;
+  padding: 10px 0 !important;
+  margin-bottom: 10px !important;
+  font-family: "Helvetica Neue","Helvetica","Arial",Sans-Serif !important;
+  cursor: pointer !important;
+  text-align: center !important;
+  width: 100% !important;
+  background: #5cb6e7 !important;
+  background: -webkit-gradient(linear,left top,left bottom,from(#5cb6e7),to(#317cd7)) !important;
+  background: -moz-linear-gradient(top,#5cb6e7,#317cd7) !important;
+  background: -ms-linear-gradient(top,#5cb6e7,#317cd7) !important;
+  background: linear-gradient(top,#5cb6e7,#317cd7) !important;
+  color: white !important;
+  font-weight: bold !important;
+  border:1px solid #0C67A5 !important;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.5) !important;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.3) !important;
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.3) !important;
+  -ms-box-shadow: inset 0 1px 0 rgba(255,255,255,0.3) !important;
+  -o-box-shadow: inset 0 1px 0 rgba(255,255,255,0.3) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3) !important;
+  -webkit-border-radius: 4px !important;
+  -moz-border-radius: 4px !important;
+  -ms-border-radius: 4px !important;
+  -o-border-radius: 4px !important;
+  border-radius: 4px !important;
 }
 
 #addToWunderlistButton.amazon span.wunderlist-icon {
-  float:left;
-  height:24px;
-  width:24px;
-  background: url(https://www.wunderlist.com/icon.png);
-  background-size: 24px;
-  margin-left:10px;
-  margin-top:-2px;
+
+  float:left !important;
+  height:24px !important;
+  width:24px !important;
+  background: url(https://www.wunderlist.com/icon.png) !important;
+  background-size: 24px !important;
+  margin-left:10px !important;
+  margin-top:-2px !important;
 }
 
 /* IMDB Button */
-
 #addToWunderlistButton.imdb {
-  padding:0 8px;
-  margin: 37px 0 0 0;
-  float: right;
+
+  padding:0 8px !important;
+  margin: 37px 0 0 0 !important;
+  float: right !important;
 }
 
 #addToWunderlistButton.imdb span.wunderlist-icon {
-    float:left;
-    height:16px;
-    width:16px;
-    background: url(https://www.wunderlist.com/icon.png);
-    background-size: 16px;
-    margin-top: 6px;
-    margin-right: 6px;
+  
+    float:left !important;
+    height:16px !important;
+    width:16px !important;
+    background: url(https://www.wunderlist.com/icon.png) !important;
+    background-size: 16px !important;
+    margin-top: 6px !important;
+    margin-right: 6px !important;
 }
 
 #addToWunderlistButton.asos {
 
-  margin: 12px 100px 0 0;
-  float: right;
+  margin: 12px 100px 0 0 !important;
+  float: right !important;
 }
 
 #addToWunderlistButton.asos span.wunderlist-icon {
 
-  margin: 0 10px 0 0;
-  vertical-align: bottom;
-  display: inline-block;
-  height: 14px;
-  width: 14px;
-  background: url(https://www.wunderlist.com/icon.png);
-  background-size: 14px;
+  margin: 0 10px 0 0 !important;
+  vertical-align: bottom !important;
+  display: inline-block !important;
+  height: 14px !important;
+  width: 14px !important;
+  background: url(https://www.wunderlist.com/icon.png) !important;
+  background-size: 14px !important;
 }
 
 #addToWunderlistButton.youtube {
 
-  cursor: pointer;
-  border-radius: 2px;
-  margin-left: 13px;
-  font-size: 12px;
-  vertical-align: middle;
-  padding: 4px 13px;
-  border: 1px solid #aaa;
-  display: inline;
+  cursor: pointer !important;
+  border-radius: 2px !important;
+  margin-left: 13px !important;
+  font-size: 12px !important;
+  vertical-align: middle !important;
+  padding: 4px 13px !important;
+  border: 1px solid #aaa !important;
+  display: inline !important;
 }
 
 #addToWunderlistButton.youtube span.wunderlist-icon {
-  display: inline-block;
-  height:16px;
-  width:16px;
-  background: url(https://www.wunderlist.com/icon.png);
-  background-size: 16px;
-  margin: 3px 0px 0 3px;
 
-  position: relative;
-  left: -8px;
-  top: 4px;
+  display: inline-block !important;
+  height:16px !important;
+  width:16px !important;
+  background: url(https://www.wunderlist.com/icon.png) !important;
+  background-size: 16px !important;
+  margin: 3px 0px 0 3px !important;
+
+  position: relative !important;
+  left: -8px !important;
+  top: 4px !important;
 }
 
 #addToWunderlistButton.ebay {
-  cursor: pointer;
-  background: #FFF;
-  margin-top: 10px;
-  padding: 2px 14px;
-  border: 1px solid #999;
-  float: left;
+
+  cursor: pointer !important;
+  background: #FFF !important;
+  margin-top: 10px !important;
+  padding: 2px 14px !important;
+  border: 1px solid #999 !important;
+  float: left !important;
 }
