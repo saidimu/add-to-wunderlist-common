@@ -2,6 +2,7 @@
 
 #wunderlist_overlay {
 
+  background: none !important;
   border: none !important;
   height: 100% !important;
   width: 100% !important;
@@ -54,16 +55,12 @@
 
 /* YAHOO MAIL */
 
-#wunderlist-container {
-  background-image: none !important;
-}
+#addToWunderlistButton.yahoo {}
 
-#wunderlist-container span.wunderlist-icon {
+#addToWunderlistButton.yahoo span.wunderlist-icon {
 
   left: 3px;
   top: 5px;
-  background: url(https://www.wunderlist.com/icon.png);
-  background-size: 16px;
   width: 16px;
   height: 16px;
   position: absolute;

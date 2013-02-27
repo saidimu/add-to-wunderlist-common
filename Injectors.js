@@ -1,5 +1,10 @@
 (function (WL) {
 
+  if (window.top !== window.top) {
+
+    return;
+  }
+
   if (!WL) {
 
     window.WL = {};
@@ -8,6 +13,20 @@
 
   var addString = 'Add to Wunderlist';
   var buttonId = 'addToWunderlistButton';
+
+  // trims whitespace, reduces inner newlines and spaces, and keeps string below 500 chars
+  function trim (string) {
+
+    string = $.trim(string).substring(0, 500);
+
+    // get rid of stacked newlines
+    string = string.replace(/\n{3,}/g, '\n\n');
+
+    // get rid of redonk spaces
+    string = string.replace(/\s{3,}/g, ' ');
+
+    return string;
+  }
 
   function generateGenericButton (className, element) {
 
@@ -51,6 +70,7 @@
       var data = {};
 
       data.title = window.title;
+      data.note = ' ';
       WL.showOverlay(data);
     });
   }
@@ -76,7 +96,7 @@
       var data = {};
 
       data.title = $('.ReadMsgSubject').text();
-      data.note = $('.ReadMsgBody').text();
+      data.note = trim($('.ReadMsgBody').text());
       WL.showOverlay(data);
     });
   }
@@ -84,13 +104,13 @@
   function yahooQuickAdd () {
 
     var $cloneTarget = $('.btn-spam:visible');
-    var $clone = $cloneTarget.clone().attr('id', 'wunderlist-container')
+    var $clone = $cloneTarget.clone().attr('id', buttonId)
       .addClass('yahoo')
       .removeClass('btn-spam');
 
     $clone.prepend($('<span/>').addClass('wunderlist-icon'));
 
-    $clone.find('a').attr('id', buttonId)
+    $clone.find('a')
       .addClass('yahoo')
       .attr('title', addString)
       .attr('data-action', '')
@@ -98,7 +118,7 @@
 
     $('#btn-msg-actions:visible').after($clone);
 
-    $('#' + buttonId).on('click', function () {
+    $('#' + buttonId + ' a.yahoo').on('click', function () {
 
       var data = {};
 
@@ -109,7 +129,7 @@
       $msgClone.find('style, script, meta').remove();
 
       data.title = $.trim($titleClone.text());
-      data.note = $.trim($msgClone.text());
+      data.note = trim($msgClone.text());
       WL.showOverlay(data);
     });
   }
@@ -128,7 +148,7 @@
       var data = {};
 
       data.title = $('meta[name="title"]').attr('content');
-      data.note = $('meta[name="description"]').attr('content') + " \n" + $('link[rel="canonical"]').attr('href');
+      data.note = trim($('meta[name="description"]').attr('content')) + " \n" + $('link[rel="canonical"]').attr('href');
       data.specialList = 'wishlist';
       WL.showOverlay(data);
       return false;
@@ -155,7 +175,7 @@
       stars = stars.length ? ' [' + stars + ']' : '';
 
       data.title = $('h1 .itemprop').text() + stars;
-      data.note = $.trim($('p[itemprop="description"]').text()) + " \n" + $('link[rel="canonical"]').attr('href');
+      data.note = trim($('p[itemprop="description"]').text()) + " \n" + $('link[rel="canonical"]').attr('href');
       data.specialList = 'movies';
 
       WL.showOverlay(data);
@@ -181,7 +201,7 @@
       var openGraph = WL.fetchOpenGraph();
 
       data.title = openGraph.title;
-      data.note = openGraph.description + " \n" + openGraph.url;
+      data.note = trim(openGraph.description) + " \n" + openGraph.url;
       data.specialList = 'movies';
       WL.showOverlay(data);
       return false;
@@ -201,8 +221,11 @@
 
       var data = {};
 
+      var $noteSource = $('#mw-content-text').clone();
+      $noteSource.find('.infobox').remove();
+
       data.title = document.title;
-      data.note = $.trim($('#mw-content-text').text()).substring(0, 500) + " ... \n" + window.location.href;
+      data.note = trim($noteSource.text()) + " ... \n" + window.location.href;
       WL.showOverlay(data);
       return false;
     }).on('submit', function () {
@@ -224,7 +247,7 @@
       var openGraph = WL.fetchOpenGraph();
 
       data.title = openGraph.title;
-      data.note = openGraph.description + " ... \n" + openGraph.url;
+      data.note = trim(openGraph.description) + " ... \n" + openGraph.url;
       data.specialList = 'wishlist';
       WL.showOverlay(data);
       return false;
@@ -246,7 +269,7 @@
       var openGraph = WL.fetchOpenGraph();
 
       data.title = openGraph.title;
-      data.note = $.trim(($('#infoAndCare').text() || openGraph.description)).substring(0, 500) + " ... \n" + openGraph.url;
+      data.note = trim(($('#infoAndCare').text() || openGraph.description)) + " ... \n" + openGraph.url;
       data.specialList = 'wishlist';
       WL.showOverlay(data);
       return false;
@@ -268,7 +291,7 @@
       var openGraph = WL.fetchOpenGraph();
 
       data.title = ($('.title-module:visible').text() || openGraph.title);
-      data.note = ($.trim($('.description-item:visible .description').text()).substring(0, 500) || openGraph.description) + " ... \n" + (openGraph.url || window.location.href);
+      data.note = trim(($('.description-item:visible .description').text() || openGraph.description)) + " ... \n" + (openGraph.url || window.location.href);
       data.specialList = 'wishlist';
       WL.showOverlay(data);
       return false;
@@ -301,6 +324,12 @@
     else if (/mail\.yahoo\.com/.test(host)) {
 
       yahooQuickAdd();
+
+      // hax since yahoo does not use stateful url changes at all
+      $('body').off('click').on('click', function () {
+
+        window.setTimeout(injectQuickAddLink, 500);
+      });
     }
     else if (/amazon\./.test(host)) {
 
