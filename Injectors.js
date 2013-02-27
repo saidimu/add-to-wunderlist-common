@@ -9,7 +9,7 @@
   var addString = 'Add to Wunderlist';
   var buttonId = 'addToWunderlistButton';
 
-  // trims whitespace, reduces inner newlines, and keeps note below 500 chars
+  // trims whitespace, reduces inner newlines and spaces, and keeps string below 500 chars
   function trim (string) {
 
     string = $.trim(string).substring(0, 500);
