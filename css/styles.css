@@ -59,6 +59,19 @@
   background-image: none !important;
 }
 
+/* yahoo mail */
+
+#wunderlist-container span.wunderlist-icon {
+
+  left: 3px;
+  top: 5px;
+  background: url(https://www.wunderlist.com/icon.png);
+  background-size: 16px;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+}
+
 /* Amazon Button */
 
 #addToWunderlistButton.amazon {

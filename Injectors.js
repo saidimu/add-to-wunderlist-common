@@ -39,7 +39,7 @@
       .attr('data-tooltip', addString)
       .attr('aria-label', addString)
       .attr('aria-haspopup', 'false')
-      .text('Wunderlist');
+      .text(addString);
 
     var $span = $('<span/>').addClass('wunderlist-icon');
     $clone.prepend($span);
@@ -64,7 +64,7 @@
       .attr('id', buttonId)
       .attr('title', addString)
       .attr('aid', 'wunderlist')
-      .text('Wunderlist');
+      .text(addString);
 
     var $span = $('<span/>').addClass('wunderlist-icon');
     $clone.find('a').prepend($span);
@@ -88,11 +88,13 @@
       .addClass('yahoo')
       .removeClass('btn-spam');
 
+    $clone.prepend($('<span/>').addClass('wunderlist-icon'));
+
     $clone.find('a').attr('id', buttonId)
       .addClass('yahoo')
       .attr('title', addString)
       .attr('data-action', '')
-      .text('Wunderlist');
+      .text(addString);
 
     $('#btn-msg-actions:visible').after($clone);
 
