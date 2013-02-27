@@ -10,9 +10,7 @@
   z-index: 99999999 !important;
   top: 0px !important;
   left: 0px !important;
-  opacity: 1 !important;
   display: block !important;
-  -webkit-transition: opacity 50ms linear !important;
 }
 
 #addToWunderlistButton {
