@@ -2,6 +2,7 @@
 
 #wunderlist_overlay {
 
+  background: none !important;
   border: none !important;
   height: 100% !important;
   width: 100% !important;
