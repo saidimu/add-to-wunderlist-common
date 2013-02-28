@@ -70,7 +70,7 @@
       var data = {};
 
       data.title = window.title;
-      data.note = ' ';
+      data.note = window.location.href;
       WL.showOverlay(data);
     });
   }

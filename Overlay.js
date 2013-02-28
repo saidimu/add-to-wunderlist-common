@@ -44,7 +44,7 @@
             'opacity': 1,
             'transitionSpeed': 50
           });
-        }, 1000);
+        }, 0);
       };
 
       document.body.appendChild(frame);
