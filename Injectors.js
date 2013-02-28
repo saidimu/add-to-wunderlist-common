@@ -232,8 +232,9 @@
 
   function injectQuickAddLink () {
 
-    var host = window.location.hostname;
     var hash = window.location.hash;
+    var host = window.location.hostname;
+    var path = window.location.pathname;
     var search = window.location.search;
 
     var $button = $('#' + buttonId);
@@ -268,7 +269,7 @@
 
       imdbQuickAdd();
     }
-    else if (/youtube\.com/.test(host)) {
+    else if (/youtube\.com/.test(host) && /\/watch/.test(path)) {
 
       youtubeQuickAdd();
     }

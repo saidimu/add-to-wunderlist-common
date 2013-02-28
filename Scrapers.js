@@ -75,7 +75,7 @@
 
       data.note = trim($('meta[name="description"]').attr('content'));
       data.note = (data.note ? data.note + " \n" + $('link[rel="canonical"]').attr('href') : undefined);
-      
+
       data.specialList = 'wishlist';
 
       return data;
@@ -174,8 +174,9 @@
   // scrape something based on the current url
   function scrape () {
 
-    var host = window.location.hostname;
     var hash = window.location.hash;
+    var host = window.location.hostname;
+    var path = window.location.pathname;
     var search = window.location.search;
 
     if (/mail\.google\.com/.test(host) && hash.split('/')[1]) {
