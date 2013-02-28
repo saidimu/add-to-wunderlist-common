@@ -226,6 +226,7 @@
 
       data.title = document.title;
       data.note = trim($noteSource.text()) + " ... \n" + window.location.href;
+      data.specialList = 'readLater';
       WL.showOverlay(data);
       return false;
     }).on('submit', function () {
