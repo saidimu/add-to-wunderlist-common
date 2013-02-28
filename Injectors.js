@@ -14,20 +14,6 @@
   var addString = 'Add to Wunderlist';
   var buttonId = 'addToWunderlistButton';
 
-  // trims whitespace, reduces inner newlines and spaces, and keeps string below 500 chars
-  function trim (string) {
-
-    string = $.trim(string).substring(0, 500);
-
-    // get rid of stacked newlines
-    string = string.replace(/\n{3,}/g, '\n\n');
-
-    // get rid of redonk spaces
-    string = string.replace(/\s{3,}/g, ' ');
-
-    return string;
-  }
-
   function generateGenericButton (className, element) {
 
     className = className || 'generic-button';
@@ -67,11 +53,7 @@
 
     $('#' + buttonId).on('click', function () {
 
-      var data = {};
-
-      data.title = window.title;
-      data.note = window.location.href;
-      WL.showOverlay(data);
+      WL.showOverlay();
     });
   }
 
@@ -93,11 +75,7 @@
 
     $('#' + buttonId).on('click', function () {
 
-      var data = {};
-
-      data.title = $('.ReadMsgSubject').text();
-      data.note = trim($('.ReadMsgBody').text());
-      WL.showOverlay(data);
+      WL.showOverlay();
     });
   }
 
@@ -120,17 +98,7 @@
 
     $('#' + buttonId + ' a.yahoo').on('click', function () {
 
-      var data = {};
-
-      var $titleClone = $('.info:visible > h3').clone();
-      $titleClone.find('style').remove();
-
-      var $msgClone = $('.msg-body.inner:visible').clone();
-      $msgClone.find('style, script, meta').remove();
-
-      data.title = $.trim($titleClone.text());
-      data.note = trim($msgClone.text());
-      WL.showOverlay(data);
+      WL.showOverlay();
     });
   }
 
@@ -145,12 +113,7 @@
       ev.stopPropagation();
       ev.preventDefault();
 
-      var data = {};
-
-      data.title = $('meta[name="title"]').attr('content');
-      data.note = trim($('meta[name="description"]').attr('content')) + " \n" + $('link[rel="canonical"]').attr('href');
-      data.specialList = 'wishlist';
-      WL.showOverlay(data);
+      WL.showOverlay();
       return false;
     }).on('submit', function () {
 
@@ -169,16 +132,8 @@
       ev.stopPropagation();
       ev.preventDefault();
 
-      var data = {};
+      WL.showOverlay();
 
-      var stars = $.trim($('.star-box-giga-star').text());
-      stars = stars.length ? ' [' + stars + ']' : '';
-
-      data.title = $('h1 .itemprop').text() + stars;
-      data.note = trim($('p[itemprop="description"]').text()) + " \n" + $('link[rel="canonical"]').attr('href');
-      data.specialList = 'movies';
-
-      WL.showOverlay(data);
       return false;
     }).on('submit', function () {
 
@@ -197,13 +152,8 @@
       ev.stopPropagation();
       ev.preventDefault();
 
-      var data = {};
-      var openGraph = WL.fetchOpenGraph();
+      WL.showOverlay();
 
-      data.title = openGraph.title;
-      data.note = trim(openGraph.description) + " \n" + openGraph.url;
-      data.specialList = 'movies';
-      WL.showOverlay(data);
       return false;
     }).on('submit', function () {
 
@@ -219,15 +169,8 @@
 
     $('#' + buttonId).on('click', function (ev) {
 
-      var data = {};
+      WL.showOverlay();
 
-      var $noteSource = $('#mw-content-text').clone();
-      $noteSource.find('.infobox').remove();
-
-      data.title = document.title;
-      data.note = trim($noteSource.text()) + " ... \n" + window.location.href;
-      data.specialList = 'readLater';
-      WL.showOverlay(data);
       return false;
     }).on('submit', function () {
 
@@ -244,13 +187,8 @@
 
     $('#' + buttonId).on('click', function (ev) {
 
-      var data = {};
-      var openGraph = WL.fetchOpenGraph();
-
-      data.title = openGraph.title;
-      data.note = trim(openGraph.description) + " ... \n" + openGraph.url;
-      data.specialList = 'wishlist';
       WL.showOverlay(data);
+
       return false;
     }).on('submit', function () {
 
@@ -266,13 +204,8 @@
 
     $('#' + buttonId).on('click', function (ev) {
 
-      var data = {};
-      var openGraph = WL.fetchOpenGraph();
+      WL.showOverlay();
 
-      data.title = openGraph.title;
-      data.note = trim(($('#infoAndCare').text() || openGraph.description)) + " ... \n" + openGraph.url;
-      data.specialList = 'wishlist';
-      WL.showOverlay(data);
       return false;
     }).on('submit', function () {
 
@@ -288,13 +221,8 @@
 
     $('#' + buttonId).on('click', function (ev) {
 
-      var data = {};
-      var openGraph = WL.fetchOpenGraph();
+      WL.showOverlay();
 
-      data.title = ($('.title-module:visible').text() || openGraph.title);
-      data.note = trim(($('.description-item:visible .description').text() || openGraph.description)) + " ... \n" + (openGraph.url || window.location.href);
-      data.specialList = 'wishlist';
-      WL.showOverlay(data);
       return false;
     }).on('submit', function () {
 

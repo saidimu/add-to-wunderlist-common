@@ -51,17 +51,22 @@
     // Builds url for passing data to wunderlist.com extension frame.
     // Takes passes in data, or defaults to the tabs title and url or text selection in the frame
 
+    // Scrape predefined data
+    var scrapeData = WL.scrape();
+
     // fetch open graph and twitter card meta data
     var openGraph = fetchOpenGraph();
     var twitterCard = fetchTwitterCard();
 
     // build main meta datas - left priority
-    var title = data.title || openGraph.title || twitterCard.title || document.title || '';
+    var title = scrapeData.title || data.title || openGraph.title || twitterCard.title || document.title || '';
     var description = openGraph.description || twitterCard.description || $('meta[name="description"]').attr('content') || '';
     var url = openGraph.url || twitterCard.url || $('link[rel="canonical"]').attr('href') || window.location.href;
 
+    console.log(data.note, scrapeData.note, url);
+
     // start building note
-    var note = data.note || url;
+    var note = data.note || scrapeData.note || url;
     var selection = window.getSelection().toString();
 
     // if not passed in note data use a default constructor
@@ -73,10 +78,12 @@
     }
 
     // prepare specialList data if present
-    if (data.specialList) {
+    if (scrapeData.specialList) {
 
-      note = 'specialList:' + data.specialList + '\u2603' + note;
+      note = 'specialList:' + scrapeData.specialList + '\u2603' + note;
     }
+
+    console.log(title, note);
 
     // encode
     title = encodeURIComponent(title);
