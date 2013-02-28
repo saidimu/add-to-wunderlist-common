@@ -35,6 +35,8 @@
           'overflow': 'hidden'
         });
 
+        frame.style.opacity = 1;
+
         setTimeout(function () {
 
           frame.style.cssText = WL.buildCss({
