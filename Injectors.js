@@ -138,6 +138,8 @@
     var $target = $('.yt-uix-button-subscription-container:visible');
     var $button = generateGenericButton('youtube yt-uix-button-subscribe-branded');
     $target.after($button);
+
+    createGenericButtonBind();
   }
 
   function wikipediaQuickAdd () {
