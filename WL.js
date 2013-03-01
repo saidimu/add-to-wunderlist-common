@@ -61,8 +61,6 @@
     var description = openGraph.description || twitterCard.description || $('meta[name="description"]').attr('content') || '';
     var url = scrapeData.url || data.url || openGraph.url || twitterCard.url || $('link[rel="canonical"]').attr('href') || window.location.href;
 
-    console.log(data.note, scrapeData.note, url);
-
     // start building note from passed in data
     var note = data.note || scrapeData.note;
     // grab user selection
@@ -86,6 +84,8 @@
 
       note = 'specialList:' + scrapeData.specialList + '\u2603' + note;
     }
+
+    // console.log(title, note);
 
     // encode
     title = encodeURIComponent(title);
