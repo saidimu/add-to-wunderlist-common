@@ -1,5 +1,8 @@
-/* Overlay and Login */
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+/* !important is because safari is retarded and requires !important on evertything */
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 
+/* Overlay and Login */
 #wunderlist_overlay {
 
   background: none !important;
@@ -47,24 +50,24 @@
 
 #addToWunderlistButton.outlook span.wunderlist-icon {
   margin-top: 12px !important;
-  float: left;
-  margin-right: 6px;
+  float: left !important;
+  margin-right: 6px !important;
 }
 
 /* YAHOO MAIL */
 
 #addToWunderlistButton.yahoo {
 
-  background-image: none;
+  background-image: none !important;
 }
 
 #addToWunderlistButton.yahoo span.wunderlist-icon {
 
-  left: 3px;
-  top: 5px;
-  width: 16px;
-  height: 16px;
-  position: absolute;
+  left: 3px !important;
+  top: 5px !important;
+  width: 16px !important;
+  height: 16px !important;
+  position: absolute !important;
 }
 
 /* AMAZON */
@@ -140,32 +143,32 @@
 /* YOUTUBE */
 
 #addToWunderlistButton.youtube {
-  display:inline-block;
-  color:#333;
-  text-shadow:0 1px 0 white;
-  font-weight:bold;
-  vertical-align:top;
-  height:auto;
-  margin-left: 10px;
-  padding: 6px 6px 5px 30px;
-  position: relative;
+  display:inline-block !important;
+  color:#333 !important;
+  text-shadow:0 1px 0 white !important;
+  font-weight:bold !important;
+  vertical-align:top !important;
+  height:auto !important;
+  margin-left: 10px !important;
+  padding: 6px 6px 5px 30px !important;
+  position: relative !important;
 }
 
 #addToWunderlistButton.youtube span.wunderlist-icon {
-  position:absolute;
-  left:6px;
-  top:3px;
+  position:absolute !important;
+  left:6px !important;
+  top:3px !important;
 }
 
 /* EBAY */
 
 #addToWunderlistButton.ebay {
-  position: relative;
-  height:17px;
-  width:17px;
-  overflow: hidden;
-  top: -20px;
-  left: -17px;
+  position: relative !important;
+  height:17px !important;
+  width:17px !important;
+  overflow: hidden !important;
+  top: -20px !important;
+  left: -17px !important;
 }
 
 #addToWunderlistButton.ebay span.wunderlist-icon {
@@ -177,24 +180,24 @@
 /* WIKIPEDIA */
 
 #addToWunderlistButton.wikipedia {
-  margin-top:5px;
+  margin-top:5px !important;
 }
 
 #addToWunderlistButton.wikipedia span.wunderlist-icon {
-  float:left;
-  margin-right:5px;
+  float:left !important;
+  margin-right:5px !important;
 }
 
 /* ETSY */
 
 #addToWunderlistButton.etsy{
-  color:#888;
-  padding:0 9px 0 29px;
+  color:#888 !important;
+  padding:0 9px 0 29px !important;
 }
 
 #addToWunderlistButton.etsy span.wunderlist-icon {
   padding:0 !important;
-  position: absolute;
-  left: 7px;
-  top: 3px;
+  position: absolute !important;
+  left: 7px !important;
+  top: 3px !important;
 }
