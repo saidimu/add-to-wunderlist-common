@@ -30,6 +30,28 @@
     return $button;
   }
 
+  function createGenericButtonBind (source) {
+
+    // create generic button handler
+    // prevent event bubbling, form submissions, etc.
+    $('#' + buttonId).on('click', function (ev) {
+
+      ev.stopPropagation();
+      ev.preventDefault();
+
+      WL.showOverlay({
+
+        'source': source || window.location.host
+      });
+
+      return false;
+    }).on('submit', function () {
+
+      return false;
+    });
+
+  }
+
   function gmailQuickAdd () {
 
     // these classes may change, not sure how long they last on gmail
@@ -51,10 +73,7 @@
 
     $targetContainer.append($clone);
 
-    $('#' + buttonId).on('click', function () {
-
-      WL.showOverlay();
-    });
+    createGenericButtonBind();
   }
 
   function outlookQuickAdd () {
@@ -73,10 +92,7 @@
 
     $cloneTarget.before($clone);
 
-    $('#' + buttonId).on('click', function () {
-
-      WL.showOverlay();
-    });
+    createGenericButtonBind();
   }
 
   function yahooQuickAdd () {
@@ -96,10 +112,7 @@
 
     $('#btn-msg-actions:visible').after($clone);
 
-    $('#' + buttonId + ' a.yahoo').on('click', function () {
-
-      WL.showOverlay();
-    });
+    createGenericButtonBind();
   }
 
   function amazonQuickAdd () {
@@ -108,17 +121,7 @@
     var $button = generateGenericButton('amazon');
     $targetContainer.prepend($button);
 
-    $('#' + buttonId).on('click', function (ev) {
-
-      ev.stopPropagation();
-      ev.preventDefault();
-
-      WL.showOverlay();
-      return false;
-    }).on('submit', function () {
-
-      return false;
-    });
+    createGenericButtonBind();
   }
 
   function imdbQuickAdd () {
@@ -127,18 +130,7 @@
     var $button = generateGenericButton('imdb btn2 large primary');
     $targetContainer.append($button);
 
-    $('#' + buttonId).on('click', function (ev) {
-
-      ev.stopPropagation();
-      ev.preventDefault();
-
-      WL.showOverlay();
-
-      return false;
-    }).on('submit', function () {
-
-      return false;
-    });
+    createGenericButtonBind();
   }
 
   function youtubeQuickAdd () {
@@ -146,19 +138,6 @@
     var $target = $('.yt-uix-button-subscription-container:visible');
     var $button = generateGenericButton('youtube yt-uix-button-subscribe-branded');
     $target.after($button);
-
-    $('#' + buttonId).on('click', function (ev) {
-
-      ev.stopPropagation();
-      ev.preventDefault();
-
-      WL.showOverlay();
-
-      return false;
-    }).on('submit', function () {
-
-      return false;
-    });
   }
 
   function wikipediaQuickAdd () {
@@ -167,16 +146,7 @@
     var $button = generateGenericButton('wikipedia');
     $target.after($button);
 
-    $('#' + buttonId).on('click', function (ev) {
-
-      WL.showOverlay();
-
-      return false;
-    }).on('submit', function () {
-
-      return false;
-    });
-
+    createGenericButtonBind();
   }
 
   function ebayQuickAdd () {
@@ -185,15 +155,7 @@
     var $button = generateGenericButton('ebay');
     $targetContainer.append($button);
 
-    $('#' + buttonId).on('click', function (ev) {
-
-      WL.showOverlay(data);
-
-      return false;
-    }).on('submit', function () {
-
-      return false;
-    });
+    createGenericButtonBind();
   }
 
   function asosQuickAdd () {
@@ -202,15 +164,7 @@
     var $button = generateGenericButton('asos button small grey', '<a/>');
     $targetContainer.append($button);
 
-    $('#' + buttonId).on('click', function (ev) {
-
-      WL.showOverlay();
-
-      return false;
-    }).on('submit', function () {
-
-      return false;
-    });
+    createGenericButtonBind();
   }
 
   function etsyQuickAdd () {
@@ -219,15 +173,7 @@
     var $button = generateGenericButton('etsy button-fave');
     $targetContainer.append($button);
 
-    $('#' + buttonId).on('click', function (ev) {
-
-      WL.showOverlay();
-
-      return false;
-    }).on('submit', function () {
-
-      return false;
-    });
+    createGenericButtonBind();
   }
 
   function injectQuickAddLink () {

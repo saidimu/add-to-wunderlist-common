@@ -53,7 +53,10 @@
 
 /* YAHOO MAIL */
 
-#addToWunderlistButton.yahoo {}
+#addToWunderlistButton.yahoo {
+
+  background-image: none;
+}
 
 #addToWunderlistButton.yahoo span.wunderlist-icon {
 

@@ -1,13 +1,10 @@
 (function (WL) {
 
-  //'use strict';
-
   if (window.top !== window.top) {
 
     return;
   }
 
-  // modules can be imported individually for different extensions, but all will export onto window.WL
   if (!WL) {
 
     window.WL = {};
@@ -17,13 +14,13 @@
   // trims whitespace, reduces inner newlines and spaces, and keeps string below 500 chars
   function trim (string) {
 
-    string = $.trim(string).substring(0, 500);
-
     // get rid of stacked newlines
     string = string.replace(/\n{3,}/g, '\n\n');
 
     // get rid of redonk spaces
     string = string.replace(/\s{3,}/g, ' ');
+
+    string = $.trim(string).substring(0, 500);
 
     return string;
   }

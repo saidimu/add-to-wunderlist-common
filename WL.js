@@ -70,11 +70,15 @@
     var selection = window.getSelection().toString();
 
     // if not passed in note data use a default constructor
-    if (!data.note) {
+    if (!data.note && !scrapeData.note) {
 
-      // append desciption after url in note
+      // append url after description in note
       // use selection over description if present
       note = (selection ? selection : description) + " \n" + note;
+    }
+    else {
+
+      note = (selection ? selection : note) + " \n" + url;
     }
 
     // prepare specialList data if present
@@ -83,11 +87,12 @@
       note = 'specialList:' + scrapeData.specialList + '\u2603' + note;
     }
 
-    console.log(title, note);
-
     // encode
     title = encodeURIComponent(title);
     note = encodeURIComponent(note);
+
+    console.log(title);
+    console.log(note);
 
     return config.host + '/#/extension/add/' + title + '/' + note;
   }
