@@ -46,8 +46,6 @@
 
     data = data || {};
 
-    console.log(data);
-
     // Builds url for passing data to wunderlist.com extension frame.
     // Takes passes in data, or defaults to the tabs title and url or text selection in the frame
 
@@ -61,24 +59,26 @@
     // build main meta datas - left priority
     var title = scrapeData.title || data.title || openGraph.title || twitterCard.title || document.title || '';
     var description = openGraph.description || twitterCard.description || $('meta[name="description"]').attr('content') || '';
-    var url = openGraph.url || twitterCard.url || $('link[rel="canonical"]').attr('href') || window.location.href;
+    var url = scrapeData.url || data.url || openGraph.url || twitterCard.url || $('link[rel="canonical"]').attr('href') || window.location.href;
 
     console.log(data.note, scrapeData.note, url);
 
-    // start building note
-    var note = data.note || scrapeData.note || url;
+    // start building note from passed in data
+    var note = data.note || scrapeData.note;
+    // grab user selection
     var selection = window.getSelection().toString();
 
-    // if not passed in note data use a default constructor
+    // if not passed in note data use a default note constructor
     if (!data.note && !scrapeData.note) {
 
-      // append url after description in note
       // use selection over description if present
-      note = (selection ? selection : description) + " \n" + note;
+      // append url after description in note
+      note = (selection ? selection : description) + " \n" + url;
     }
     else {
 
-      note = (selection ? selection : note) + " \n" + url;
+      // use selection over note if present and allow scraper exclude url
+      note = (selection ? selection : note) + (selection && url !== 'none' ? " \n" + url : '');
     }
 
     // prepare specialList data if present
@@ -90,9 +90,6 @@
     // encode
     title = encodeURIComponent(title);
     note = encodeURIComponent(note);
-
-    console.log(title);
-    console.log(note);
 
     return config.host + '/#/extension/add/' + title + '/' + note;
   }

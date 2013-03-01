@@ -11,6 +11,9 @@
     WL = window.WL;
   }
 
+  // note/url separator
+  var nL = " ... \n";
+
   // trims whitespace, reduces inner newlines and spaces, and keeps string below 500 chars
   function trim (string) {
 
@@ -43,6 +46,7 @@
       var data = {};
 
       data.title = $('.ReadMsgSubject').text();
+      data.url = 'none';
       data.note = trim($('.ReadMsgBody').text());
 
       return data;
@@ -59,6 +63,7 @@
       $msgClone.find('style, script, meta').remove();
 
       data.title = $.trim($titleClone.text());
+      data.url = 'none';
       data.note = trim($msgClone.text());
 
       return data;
@@ -70,8 +75,10 @@
 
       data.title = $('meta[name="title"]').attr('content');
 
+      data.url = $('link[rel="canonical"]').attr('href');
+
       data.note = trim($('meta[name="description"]').attr('content'));
-      data.note = (data.note ? data.note + " \n" + $('link[rel="canonical"]').attr('href') : undefined);
+      data.note = (data.note ? data.note + nL +  data.url : undefined);
 
       data.specialList = 'wishlist';
 
@@ -88,8 +95,10 @@
       data.title = $('h1 .itemprop').text();
       data.title = (data.title ? data.title + stars : undefined);
 
+      data.url = $('link[rel="canonical"]').attr('href');
+
       data.note = trim($('p[itemprop="description"]').text());
-      data.note = (data.note ? data.note + " \n" + $('link[rel="canonical"]').attr('href') : undefined);
+      data.note = (data.note ? data.note + nL + data.url : undefined);
 
       data.specialList = 'movies';
 
@@ -102,8 +111,11 @@
       var openGraph = WL.fetchOpenGraph();
 
       data.title = openGraph.title;
+
+      data.url = openGraph.url;
+
       data.note = trim(openGraph.description);
-      data.note = (data.note ? data.note + " \n" + openGraph.url : undefined);
+      data.note = (data.note ? data.note + nL + data.url : undefined);
 
       data.specialList = 'movies';
 
@@ -118,8 +130,11 @@
       $noteSource.find('.infobox').remove();
 
       data.title = document.title;
+
+      data.url = window.location.href;
+
       data.note = trim($noteSource.text());
-      data.note = (data.note ? data.note + " ... \n" + window.location.href : undefined);
+      data.note = (data.note ? data.note + nL + data.url : undefined);
 
       data.specialList = 'readLater';
 
@@ -132,8 +147,11 @@
       var openGraph = WL.fetchOpenGraph();
 
       data.title = openGraph.title;
+
+      data.url = openGraph.url;
+
       data.note = trim(openGraph.description);
-      data.note = data.note ? data.note + " ... \n" + openGraph.url : undefined;
+      data.note = data.note ? data.note + nL + data.url : undefined;
 
       data.specialList = 'wishlist';
 
@@ -146,8 +164,11 @@
       var openGraph = WL.fetchOpenGraph();
 
       data.title = openGraph.title;
+
+      data.url = openGraph.url;
+
       data.note = trim(($('#infoAndCare').text() || openGraph.description));
-      data.note = (data.note ? data.note + " ... \n" + openGraph.url : undefined);
+      data.note = (data.note ? data.note + nL + data.url : undefined);
 
       data.specialList = 'wishlist';
 
@@ -160,8 +181,12 @@
       var openGraph = WL.fetchOpenGraph();
 
       data.title = ($('.title-module:visible').text() || openGraph.title);
+
+      data.url = (openGraph.url || window.location.href);
+
       data.note = trim(($('.description-item:visible .description').text() || openGraph.description));
-      data.note = (data.note ? data.note + " ... \n" + (openGraph.url || window.location.href) : undefined);
+      data.note = (data.note ? data.note + nL + data.url : undefined);
+
       data.specialList = 'wishlist';
 
       return data;
