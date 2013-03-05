@@ -117,7 +117,7 @@
 
   function amazonQuickAdd () {
 
-    var $targetContainer = $('.buyingDetailsGrid');
+    var $targetContainer = $('.GFTButtonCondo');
     var $button = generateGenericButton('amazon');
     $targetContainer.prepend($button);
 
@@ -153,7 +153,7 @@
 
   function ebayQuickAdd () {
 
-    var $targetContainer = $('#ebayShare_1');
+    var $targetContainer = $('.drpdwnCmp');
     var $button = generateGenericButton('ebay');
     $targetContainer.append($button);
 

@@ -74,40 +74,42 @@
 
 #addToWunderlistButton.amazon {
   -webkit-font-smoothing:antialiased !important;
-  padding: 10px 0 !important;
-  margin-bottom: 10px !important;
+  padding: 3px 20px 3px 42px !important;
+  display:inline-block;
+  margin:10px 0 5px 0 !important;
   font-family: "Helvetica Neue","Helvetica","Arial",Sans-Serif !important;
   cursor: pointer !important;
   text-align: center !important;
-  width: 100% !important;
-  background: #5cb6e7 !important;
-  background: -webkit-gradient(linear,left top,left bottom,from(#5cb6e7),to(#317cd7)) !important;
-  background: -moz-linear-gradient(top,#5cb6e7,#317cd7) !important;
-  background: -ms-linear-gradient(top,#5cb6e7,#317cd7) !important;
-  background: linear-gradient(top,#5cb6e7,#317cd7) !important;
-  color: white !important;
-  font-weight: bold !important;
-  border:1px solid #0C67A5 !important;
-  text-shadow: 0 1px 0 rgba(0,0,0,0.5) !important;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.3) !important;
-  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.3) !important;
-  -ms-box-shadow: inset 0 1px 0 rgba(255,255,255,0.3) !important;
-  -o-box-shadow: inset 0 1px 0 rgba(255,255,255,0.3) !important;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3) !important;
-  -webkit-border-radius: 4px !important;
-  -moz-border-radius: 4px !important;
-  -ms-border-radius: 4px !important;
-  -o-border-radius: 4px !important;
-  border-radius: 4px !important;
+  color: #000066 !important;
+  border:1px solid #898959 !important;
+  text-shadow: 0 1px 0 white !important;
+  font-size:12px !important;
+
+  background: #E7E7C2 !important;
+  background: -webkit-gradient(linear,left top,left bottom,from(#E7E7C2),to(#DCDCB9)) !important;
+  background: -moz-linear-gradient(top,#E7E7C2,#DCDCB9) !important;
+  background: -ms-linear-gradient(top,#E7E7C2,#DCDCB9) !important;
+  background: linear-gradient(top,#E7E7C2,#DCDCB9) !important;
+
+  -webkit-box-shadow: inset 0 6px 0 rgba(255,255,255,0.5), inset 0 -2px 3px rgba(0,0,0,0.16) !important;
+  -moz-box-shadow: inset 0 6px 0 rgba(255,255,255,0.5), inset 0 -2px 3px rgba(0,0,0,0.16) !important;
+  -ms-box-shadow: inset 0 6px 0 rgba(255,255,255,0.5), inset 0 -2px 3px rgba(0,0,0,0.16) !important;
+  -o-box-shadow: inset 0 6px 0 rgba(255,255,255,0.5), inset 0 -2px 3px rgba(0,0,0,0.16) !important;
+  box-shadow: inset 0 6px 0 rgba(255,255,255,0.5), inset 0 -2px 3px rgba(0,0,0,0.16) !important;
+
+  -webkit-border-radius: 6px !important;
+  -moz-border-radius: 6px !important;
+  -ms-border-radius: 6px !important;
+  -o-border-radius: 6px !important;
+  border-radius: 6px !important;
+
+  position: relative !important;
 }
 
 #addToWunderlistButton.amazon span.wunderlist-icon {
-  float:left !important;
-  height:24px !important;
-  width:24px !important;
-  background-size: 24px !important;
-  margin-left:10px !important;
-  margin-top:-2px !important;
+  position:absolute !important;
+  left:18px !important;
+  top:2px !important;
 }
 
 /* IMDB */
@@ -164,17 +166,27 @@
 
 #addToWunderlistButton.ebay {
   position: relative !important;
-  height:17px !important;
-  width:17px !important;
-  overflow: hidden !important;
-  top: -20px !important;
-  left: -17px !important;
+  background: url("http://p.ebaystatic.com/aw/pics/myebay/images/sprAddToListImg.png") repeat-x scroll 0 1px;
+  border: solid 1px #999;
+  color: #666;
+  text-decoration: none;
+  height: 12px;
+  display: inline-block;
+  padding: 1px 10px 3px 28px;
+  line-height: 1.2em;
+}
+
+#addToWunderlistButton.ebay:hover {
+  background: url("http://p.ebaystatic.com/aw/pics/myebay/images/sprAddToListImg.png") repeat-x scroll 0 -50px;
 }
 
 #addToWunderlistButton.ebay span.wunderlist-icon {
-  height: 17px !important;
-  width: 17px !important;
-  background-size: 17px !important;
+  position:absolute;
+  height: 12px !important;
+  width: 12px !important;
+  background-size: 12px !important;
+  top:2px;
+  left:10px;
 }
 
 /* WIKIPEDIA */
