@@ -35,6 +35,7 @@
 
 			var data = {};
 
+      data.scraper = 'gmail';
       data.title = window.title;
       data.note = window.location.href;
 
@@ -45,6 +46,7 @@
 
       var data = {};
 
+      data.scraper = 'outlook';
       data.title = $('.ReadMsgSubject').text();
       data.url = 'none';
       data.note = trim($('.ReadMsgBody').text());
@@ -62,6 +64,7 @@
       var $msgClone = $('.msg-body.inner:visible').clone();
       $msgClone.find('style, script, meta').remove();
 
+      data.scraper = 'yahooMail';
       data.title = $.trim($titleClone.text());
       data.url = 'none';
       data.note = trim($msgClone.text());
@@ -73,6 +76,8 @@
 
       var data = {};
 
+      data.scraper = 'amazon';
+      
       data.title = $('meta[name="title"]').attr('content');
 
       data.url = $('link[rel="canonical"]').attr('href');
@@ -92,6 +97,8 @@
       var stars = $.trim($('.star-box-giga-star').text());
       stars = stars.length ? ' [' + stars + ']' : '';
 
+      data.scraper = 'imdb';
+      
       data.title = $('h1 .itemprop').text();
       data.title = (data.title ? data.title + stars : undefined);
 
@@ -110,6 +117,8 @@
       var data = {};
       var openGraph = WL.fetchOpenGraph();
 
+      data.scraper = 'youtube';
+      
       data.title = openGraph.title;
 
       data.url = openGraph.url;
@@ -125,6 +134,8 @@
     'wikipedia': function  () {
 
       var data = {};
+
+      data.scraper = 'wikipedia';
 
       var $noteSource = $('#mw-content-text').clone();
       $noteSource.find('.infobox').remove();
@@ -146,6 +157,8 @@
       var data = {};
       var openGraph = WL.fetchOpenGraph();
 
+      data.scraper = 'ebay';
+      
       data.title = openGraph.title;
 
       data.url = openGraph.url;
@@ -163,6 +176,8 @@
       var data = {};
       var openGraph = WL.fetchOpenGraph();
 
+      data.scraper = 'asos';
+
       data.title = openGraph.title;
 
       data.url = openGraph.url;
@@ -179,6 +194,8 @@
 
       var data = {};
       var openGraph = WL.fetchOpenGraph();
+
+      data.scraper = 'etsy';
 
       data.title = ($('.title-module:visible').text() || openGraph.title);
 
