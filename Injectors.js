@@ -144,7 +144,7 @@
 
   function wikipediaQuickAdd () {
 
-    var $target = $('#siteSub');
+    var $target = $('.firstHeading span');
     var $button = generateGenericButton('wikipedia');
     $target.after($button);
 
