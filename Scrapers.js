@@ -14,20 +14,6 @@
   // note/url separator
   var nL = " ... \n";
 
-  // trims whitespace, reduces inner newlines and spaces, and keeps string below 500 chars
-  function trim (string) {
-
-    // get rid of stacked newlines
-    string = string.replace(/\n{3,}/g, '\n\n');
-
-    // get rid of redonk spaces
-    string = string.replace(/\s{3,}/g, ' ');
-
-    string = $.trim(string).substring(0, 500);
-
-    return string;
-  }
-
   // get the datas we really want
   var Scrapers = {
 
@@ -49,7 +35,7 @@
       data.scraper = 'outlook';
       data.title = $('.ReadMsgSubject').text();
       data.url = 'none';
-      data.note = trim($('.ReadMsgBody').text());
+      data.note = $('.ReadMsgBody').text();
 
       return data;
     },
@@ -67,7 +53,7 @@
       data.scraper = 'yahooMail';
       data.title = $.trim($titleClone.text());
       data.url = 'none';
-      data.note = trim($msgClone.text());
+      data.note = $msgClone.text();
 
       return data;
     },
@@ -77,14 +63,10 @@
       var data = {};
 
       data.scraper = 'amazon';
-      
       data.title = $('meta[name="title"]').attr('content');
-
       data.url = $('link[rel="canonical"]').attr('href');
-
-      data.note = trim($('meta[name="description"]').attr('content'));
-      data.note = (data.note ? data.note + nL +  data.url : undefined);
-
+      data.note = $('meta[name="description"]').attr('content');
+      // data.note = (data.note ? data.note + nL +  data.url : undefined);
       data.specialList = 'wishlist';
 
       return data;
@@ -98,14 +80,12 @@
       stars = stars.length ? ' [' + stars + ']' : '';
 
       data.scraper = 'imdb';
-      
       data.title = $('h1 .itemprop').text();
       data.title = (data.title ? data.title + stars : undefined);
-
       data.url = $('link[rel="canonical"]').attr('href');
 
-      data.note = trim($('p[itemprop="description"]').text());
-      data.note = (data.note ? data.note + nL + data.url : undefined);
+      data.note = $('p[itemprop="description"]').text();
+      // data.note = (data.note ? data.note + nL + data.url : undefined);
 
       data.specialList = 'movies';
 
@@ -118,13 +98,10 @@
       var openGraph = WL.fetchOpenGraph();
 
       data.scraper = 'youtube';
-      
       data.title = openGraph.title;
-
       data.url = openGraph.url;
-
-      data.note = trim(openGraph.description);
-      data.note = (data.note ? data.note + nL + data.url : undefined);
+      data.note = openGraph.description;
+      // data.note = (data.note ? data.note + nL + data.url : undefined);
 
       data.specialList = 'movies';
 
@@ -141,12 +118,9 @@
       $noteSource.find('.infobox').remove();
 
       data.title = document.title;
-
       data.url = window.location.href;
-
-      data.note = trim($noteSource.text());
-      data.note = (data.note ? data.note + nL + data.url : undefined);
-
+      data.note = $noteSource.text();
+      // data.note = (data.note ? data.note + nL + data.url : undefined);
       data.specialList = 'readLater';
 
       return data;
@@ -158,14 +132,10 @@
       var openGraph = WL.fetchOpenGraph();
 
       data.scraper = 'ebay';
-      
       data.title = openGraph.title;
-
       data.url = openGraph.url;
-
-      data.note = trim(openGraph.description);
-      data.note = data.note ? data.note + nL + data.url : undefined;
-
+      data.note = openGraph.description;
+      // data.note = data.note ? data.note + nL + data.url : undefined;
       data.specialList = 'wishlist';
 
       return data;
@@ -179,12 +149,9 @@
       data.scraper = 'asos';
 
       data.title = openGraph.title;
-
       data.url = openGraph.url;
-
-      data.note = trim(($('#infoAndCare').text() || openGraph.description));
-      data.note = (data.note ? data.note + nL + data.url : undefined);
-
+      data.note = ($('#infoAndCare').text() || openGraph.description);
+      // data.note = (data.note ? data.note + nL + data.url : undefined);
       data.specialList = 'wishlist';
 
       return data;
@@ -196,14 +163,10 @@
       var openGraph = WL.fetchOpenGraph();
 
       data.scraper = 'etsy';
-
       data.title = ($('.title-module:visible').text() || openGraph.title);
-
       data.url = (openGraph.url || window.location.href);
-
-      data.note = trim(($('.description-item:visible .description').text() || openGraph.description));
-      data.note = (data.note ? data.note + nL + data.url : undefined);
-
+      data.note = ($('.description-item:visible .description').text() || openGraph.description);
+      // data.note = (data.note ? data.note + nL + data.url : undefined);
       data.specialList = 'wishlist';
 
       return data;

@@ -8,10 +8,10 @@
   // common config
   var config = {
 
-    // 'host': 'https://next.wunderlist.com'
+    'host': 'https://next.wunderlist.com'
     // 'host': 'https://www.wunderlist.com'
     // 'host': 'http://localhost:5000'
-    'host': 'http://web.dev.wunderlist.com'
+    // 'host': 'http://web.dev.wunderlist.com'
   };
 
   // modules can be imported individually for different extensions, but all will export onto window.WL
@@ -19,6 +19,28 @@
 
     window.WL = {};
     WL = window.WL;
+  }
+
+  // trims whitespace, reduces inner newlines and spaces
+  // and keeps string below 500 chars
+  function trim (string, length) {
+
+    // default length to trim by is 500 chars
+    length = length || 500;
+
+    // get rid of stacked newlines
+    string = string.replace(/\n{3,}/g, '\n\n');
+
+    // get rid of redonk spaces
+    string = string.replace(/\s{3,}/g, ' ');
+    string = $.trim(string);
+
+    // only trim string length if it's
+    if (string.length > length) {
+      string = string.substring(0, length) + '...';
+    }
+
+    return string;
   }
 
   function fetchOpenGraph () {
@@ -59,13 +81,15 @@
 
     // build main meta datas - left priority
     var title = scrapeData.title || data.title || openGraph.title || twitterCard.title || document.title || '';
-    var description = openGraph.description || twitterCard.description || $('meta[name="description"]').attr('content') || '';
+    var description = trim(openGraph.description || twitterCard.description || $('meta[name="description"]').attr('content') || '');
     var url = scrapeData.url || data.url || openGraph.url || twitterCard.url || $('link[rel="canonical"]').attr('href') || window.location.href;
 
     // start building note from passed in data
-    var note = data.note || scrapeData.note;
-    // grab user selection
-    var selection = window.getSelection().toString();
+    // and make sure it doesn't exceed the max length
+    var note = trim(data.note || scrapeData.note, 1000);
+
+    // grab user selection and trim to max 5000 characters
+    var selection = trim(window.getSelection().toString() || '', 5000);
 
     // if not passed in note data use a default note constructor
     if (!data.note && !scrapeData.note) {
@@ -77,7 +101,7 @@
     else {
 
       // use selection over note if present and allow scraper exclude url
-      note = (selection ? selection : note) + (selection && url !== 'none' ? " \n" + url : '');
+      note = (selection ? selection : note) + " \n" + url;
     }
 
     // prepare specialList data if present
@@ -86,12 +110,11 @@
       note = 'specialList:' + scrapeData.specialList + '\u2603' + note;
     }
 
+    // save scraper type/name for in-app analytics
     if (scrapeData.scraper) {
 
       note = 'scraper:' + scrapeData.scraper + '\u2603' + note;
     }
-
-    // console.log(title, note);
 
     // encode
     title = encodeURIComponent(title);
