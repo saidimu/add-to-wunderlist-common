@@ -192,12 +192,19 @@
 /* WIKIPEDIA */
 
 #addToWunderlistButton.wikipedia {
-  margin-top:5px !important;
+  display: inline-block;
+  position:relative;
+  font-size: 12px;
+  margin-left: 10px;
+  padding-left: 32px;
+  vertical-align: top;
+  border-left: 1px solid #aaa;
 }
 
 #addToWunderlistButton.wikipedia span.wunderlist-icon {
-  float:left !important;
-  margin-right:5px !important;
+  position:absolute;
+  left:10px;
+  top:6px;
 }
 
 /* ETSY */
