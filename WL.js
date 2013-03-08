@@ -29,7 +29,7 @@
     length = length || 500;
 
     // get rid of stacked newlines
-    string = string.replace(/\n{3,}/g, '\n\n');
+    string = (string || '').replace(/\n{3,}/g, '\n\n');
 
     // get rid of redonk spaces
     string = string.replace(/\s{3,}/g, ' ');
