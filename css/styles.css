@@ -75,7 +75,7 @@
 #addToWunderlistButton.amazon {
   -webkit-font-smoothing:antialiased !important;
   padding: 3px 20px 3px 42px !important;
-  display:inline-block;
+  display:inline-block !important;
   margin:10px 0 5px 0 !important;
   font-family: "Helvetica Neue","Helvetica","Arial",Sans-Serif !important;
   cursor: pointer !important;
@@ -166,47 +166,47 @@
 
 #addToWunderlistButton.ebay {
   position: relative !important;
-  background: url("http://p.ebaystatic.com/aw/pics/myebay/images/sprAddToListImg.png") repeat-x scroll 0 1px;
-  border: solid 1px #999;
-  color: #666;
-  text-decoration: none;
-  height: 12px;
-  display: inline-block;
-  padding: 1px 10px 3px 28px;
-  line-height: 1.2em;
-  display:block;
-  margin-top:7px;
+  background: url("http://p.ebaystatic.com/aw/pics/myebay/images/sprAddToListImg.png") repeat-x scroll 0 1px !important;
+  border: solid 1px #999 !important;
+  color: #666 !important;
+  text-decoration: none !important;
+  height: 12px !important;
+  display: inline-block !important;
+  padding: 1px 10px 3px 28px !important;
+  line-height: 1.2em !important;
+  display:block !important;
+  margin-top:7px !important;
 }
 
 #addToWunderlistButton.ebay:hover {
-  background: url("http://p.ebaystatic.com/aw/pics/myebay/images/sprAddToListImg.png") repeat-x scroll 0 -50px;
+  background: url("http://p.ebaystatic.com/aw/pics/myebay/images/sprAddToListImg.png") repeat-x scroll 0 -50px !important;
 }
 
 #addToWunderlistButton.ebay span.wunderlist-icon {
-  position:absolute;
+  position:absolute !important;
   height: 12px !important;
   width: 12px !important;
   background-size: 12px !important;
-  top:2px;
-  left:10px;
+  top:2px !important;
+  left:10px !important;
 }
 
 /* WIKIPEDIA */
 
 #addToWunderlistButton.wikipedia {
-  display: inline-block;
-  position:relative;
-  font-size: 12px;
-  margin-left: 10px;
-  padding-left: 32px;
-  vertical-align: top;
-  border-left: 1px solid #aaa;
+  display: inline-block !important;
+  position:relative !important;
+  font-size: 12px !important;
+  margin-left: 10px !important;
+  padding-left: 32px !important;
+  vertical-align: top !important;
+  border-left: 1px solid #aaa !important;
 }
 
 #addToWunderlistButton.wikipedia span.wunderlist-icon {
-  position:absolute;
-  left:10px;
-  top:6px;
+  position:absolute !important;
+  left:10px !important;
+  top:6px !important;
 }
 
 /* ETSY */
