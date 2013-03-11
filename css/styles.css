@@ -40,6 +40,14 @@
   box-shadow:0 1px 2px rgba(0,0,0,0.1) !important;
 }
 
+#addToWunderlistButton.gmail:active {
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1) !important;
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1) !important;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1) !important;
+  border-color:#C6C6C6 !important;
+  background: #f8f8f8 !important;
+}
+
 #addToWunderlistButton.gmail span.wunderlist-icon {
   top: 5px !important;
   left: 14px !important;
