@@ -8,10 +8,10 @@
   // common config
   var config = {
 
-    // 'host': 'https://next.wunderlist.com'
+    'host': 'https://next.wunderlist.com'
     // 'host': 'https://www.wunderlist.com'
     // 'host': 'http://localhost:5000'
-    'host': 'http://web.dev.wunderlist.com'
+    // 'host': 'http://web.dev.wunderlist.com'
   };
 
   // modules can be imported individually for different extensions, but all will export onto window.WL
