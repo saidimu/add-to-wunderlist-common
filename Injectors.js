@@ -178,6 +178,18 @@
     createGenericButtonBind();
   }
 
+  function hackerNewsQuickAdd () {
+
+    var $targetContainer = $('.subtext');
+    var $button = generateGenericButton('hacker-news');
+    var $divider = $('<span> | </span>');
+
+    $button.text($button.text().toLowerCase());
+    $targetContainer.append($divider).append($button);
+
+    createGenericButtonBind();
+  }
+
   function injectQuickAddLink () {
 
     var hash = window.location.hash;
@@ -236,6 +248,10 @@
     else if (/\.etsy\./.test(host)) {
 
       etsyQuickAdd();
+    }
+    else if (/news\.ycombinator\.com/.test(host) && path === '/item') {
+
+      hackerNewsQuickAdd();
     }
   }
 

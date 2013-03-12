@@ -230,3 +230,17 @@
   left: 7px !important;
   top: 3px !important;
 }
+
+/* HACKER NEWS */
+
+#addToWunderlistButton.hacker-news {
+  display:inline-block !important;
+}
+
+#addToWunderlistButton.hacker-news:hover {
+  text-decoration: underline !important;
+}
+
+#addToWunderlistButton.hacker-news span.wunderlist-icon {
+  display:none !important;
+}
