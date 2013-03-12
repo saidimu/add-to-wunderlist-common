@@ -168,9 +168,18 @@
       data.scraper = 'asos';
 
       data.title = openGraph.title;
+
+      var price = $.trim($('.product_price_details').text());
+      if (price) {
+        data.title = data.title + ' (' + price + ')';
+      }
+
       data.url = openGraph.url;
-      data.note = ($('#infoAndCare').text() || openGraph.description);
-      // data.note = (data.note ? data.note + nL + data.url : undefined);
+
+      var mainDescription = $('.product-description').html().replace(/<br>/g, '\n').replace(/<(?:.|\n)*?>/gm, '');
+      var careDescription = $('#infoAndCare').html().replace(/<br>/g, '\n').replace(/<(?:.|\n)*?>/gm, '');
+
+      data.note = $.trim(mainDescription + '\n\n' + careDescription);
       data.specialList = 'wishlist';
 
       return data;
