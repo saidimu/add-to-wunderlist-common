@@ -199,8 +199,12 @@
       data.title = window.title;
       data.url = window.location.href;
 
-      console.log($('.subtext').closest('tbody').find('tr'));
-      // data.note =
+      var $bodyRow = $('.subtext').closest('tbody').find('tr').eq(3);
+      var bodyText = $bodyRow.find('td').eq(1).text();
+
+      if (bodyText) {
+        data.note = bodyText;
+      }
 
       data.specialList = 'readLater';
 
