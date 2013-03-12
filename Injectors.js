@@ -49,7 +49,26 @@
 
       return false;
     });
+  }
 
+  function createHackerNewsIndexButtonBind (element) {
+
+    $('#' + buttonId, element).on('click', function (ev) {
+
+      ev.stopPropagation();
+      ev.preventDefault();
+
+      WL.showOverlay({
+        'source': window.location.host,
+        'scraperTarget': element
+      });
+
+      return false;
+    })
+    .on('submit', function () {
+
+      return false;
+    });
   }
 
   function gmailQuickAdd () {
@@ -190,6 +209,22 @@
     createGenericButtonBind();
   }
 
+  function hackerNewsIndexQuickAdd () {
+
+    var $targetContainer = $('.subtext');
+
+    $targetContainer.each(function (index, element) {
+
+      var $button = generateGenericButton('hacker-news');
+      var $divider = $('<span> | </span>');
+
+      $button.text($button.text().toLowerCase());
+      $(element).append($divider).append($button);
+
+      createHackerNewsIndexButtonBind(element);
+    });
+  }
+
   function injectQuickAddLink () {
 
     var hash = window.location.hash;
@@ -252,6 +287,10 @@
     else if (/news\.ycombinator\.com/.test(host) && path === '/item') {
 
       hackerNewsQuickAdd();
+    }
+    else if (/news\.ycombinator\.com/.test(host)) {
+
+      hackerNewsIndexQuickAdd();
     }
   }
 

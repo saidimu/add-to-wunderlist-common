@@ -209,11 +209,28 @@
       data.specialList = 'readLater';
 
       return data;
+    },
+
+    'hackerNewsIndex': function (targetElement) {
+
+      var data = {};
+
+      var $element = $(targetElement);
+      var $row = $element.closest('tr');
+      var $titleRow = $row.prev('tr');
+      var $title = $titleRow.find('.title').eq(1);
+
+      data.title = $title.text();
+      data.url = window.location.origin + '/' + $element.find('a').last().attr('href');
+
+      data.specialList = 'readLater';
+
+      return data;
     }
 	};
 
   // scrape something based on the current url
-  function scrape () {
+  function scrape (data) {
 
     var hash = window.location.hash;
     var host = window.location.hostname;
@@ -263,6 +280,10 @@
     else if (/news\.ycombinator\.com/.test(host) && path === '/item') {
 
       return Scrapers.hackerNews();
+    }
+    else if (/news\.ycombinator\.com/.test(host) && data.scraperTarget) {
+
+      return Scrapers.hackerNewsIndex(data.scraperTarget);
     }
 
     // return something as nothing

@@ -73,7 +73,7 @@
     // Takes passes in data, or defaults to the tabs title and url or text selection in the frame
 
     // Scrape predefined data
-    var scrapeData = WL.scrape();
+    var scrapeData = WL.scrape(data);
 
     // fetch open graph and twitter card meta data
     var openGraph = fetchOpenGraph();
