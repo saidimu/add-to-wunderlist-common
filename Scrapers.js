@@ -226,6 +226,19 @@
       data.specialList = 'readLater';
 
       return data;
+    },
+
+    'twitterIndex': function (targetElement) {
+
+      var data = {};
+
+      var $element = $(targetElement);
+      var $tweet = $element.closest('.content');
+
+      data.title = $tweet.find('.js-tweet-text').text();
+      data.url = window.location.origin + $tweet.find('a.details').attr('href');
+
+      return data;
     }
 	};
 
@@ -284,6 +297,10 @@
     else if (/news\.ycombinator\.com/.test(host) && data.scraperTarget) {
 
       return Scrapers.hackerNewsIndex(data.scraperTarget);
+    }
+    else if (/twitter\.com/.test(host)) {
+
+        return Scrapers.twitterIndex(data.scraperTarget);
     }
 
     // return something as nothing
