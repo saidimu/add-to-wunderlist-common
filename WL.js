@@ -8,8 +8,8 @@
   // common config
   var config = {
 
-    'host': 'https://next.wunderlist.com'
-    // 'host': 'https://www.wunderlist.com'
+    // 'host': 'https://next.wunderlist.com'
+    'host': 'https://www.wunderlist.com'
     // 'host': 'http://localhost:5000'
     // 'host': 'http://web.dev.wunderlist.com'
   };
