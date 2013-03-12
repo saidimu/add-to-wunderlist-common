@@ -23,7 +23,26 @@
 
       data.scraper = 'gmail';
       data.title = window.title;
-      data.note = window.location.href;
+      data.url = window.location.href;
+
+      var note = '';
+
+      $('.ii').each(function (index, element) {
+
+        var text = $(element).text();
+
+        if (!text) {
+          return;
+        }
+
+        if (note) {
+          note = note + '\n\n';
+        }
+
+        note = note + text;
+      });
+
+      data.note = note;
 
       return data;
     },
@@ -170,6 +189,22 @@
       data.specialList = 'wishlist';
 
       return data;
+    },
+
+    'hackerNews': function () {
+
+      var data = {};
+
+      data.scraper = 'hackerNews';
+      data.title = window.title;
+      data.url = window.location.href;
+
+      console.log($('.subtext').closest('tbody').find('tr'));
+      // data.note =
+
+      data.specialList = 'readLater';
+
+      return data;
     }
 	};
 
@@ -220,6 +255,10 @@
     else if (/\.etsy\./.test(host)) {
 
       return Scrapers.etsy();
+    }
+    else if (/news\.ycombinator\.com/.test(host) && path === '/item') {
+
+      return Scrapers.hackerNews();
     }
 
     // return something as nothing
