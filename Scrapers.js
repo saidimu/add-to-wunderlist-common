@@ -230,7 +230,7 @@
       var $title = $titleRow.find('.title').eq(1);
 
       data.title = $title.text();
-      data.url = window.location.origin + '/' + $element.find('a').last().attr('href');
+      data.url = window.location.protocol + '//' + window.location.host + '/' + $element.find('a').last().attr('href');
 
       data.specialList = 'readLater';
 
@@ -245,7 +245,7 @@
       var $tweet = $element.closest('.content');
 
       data.title = $tweet.find('.js-tweet-text').text();
-      data.url = window.location.origin + $tweet.find('a.details').attr('href');
+      data.url = window.location.protocol + '//' + window.location.host + $tweet.find('a.details').attr('href');
 
       return data;
     }
