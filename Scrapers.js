@@ -82,10 +82,16 @@
       var data = {};
 
       data.scraper = 'amazon';
+
       data.title = $('meta[name="title"]').attr('content');
+      var price = $('.priceLarge').text();
+
+      if (price) {
+        data.title = data.title + ' (' + price + ')';
+      }
+
       data.url = $('link[rel="canonical"]').attr('href');
       data.note = $('meta[name="description"]').attr('content');
-      // data.note = (data.note ? data.note + nL +  data.url : undefined);
       data.specialList = 'wishlist';
 
       return data;
@@ -104,7 +110,6 @@
       data.url = $('link[rel="canonical"]').attr('href');
 
       data.note = $('p[itemprop="description"]').text();
-      // data.note = (data.note ? data.note + nL + data.url : undefined);
 
       data.specialList = 'movies';
 
@@ -120,7 +125,6 @@
       data.title = openGraph.title;
       data.url = openGraph.url;
       data.note = openGraph.description;
-      // data.note = (data.note ? data.note + nL + data.url : undefined);
 
       data.specialList = 'movies';
 
@@ -139,7 +143,6 @@
       data.title = document.title;
       data.url = window.location.href;
       data.note = $noteSource.text();
-      // data.note = (data.note ? data.note + nL + data.url : undefined);
       data.specialList = 'readLater';
 
       return data;
@@ -154,7 +157,6 @@
       data.title = openGraph.title;
       data.url = openGraph.url;
       data.note = openGraph.description;
-      // data.note = data.note ? data.note + nL + data.url : undefined;
       data.specialList = 'wishlist';
 
       return data;
@@ -194,7 +196,6 @@
       data.title = ($('.title-module:visible').text() || openGraph.title);
       data.url = (openGraph.url || window.location.href);
       data.note = ($('.description-item:visible .description').text() || openGraph.description);
-      // data.note = (data.note ? data.note + nL + data.url : undefined);
       data.specialList = 'wishlist';
 
       return data;
