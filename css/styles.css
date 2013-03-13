@@ -184,6 +184,7 @@
   line-height: 1.2em !important;
   display:block !important;
   margin-top:7px !important;
+  max-width: 100px;
 }
 
 #addToWunderlistButton.ebay:hover {

@@ -172,7 +172,7 @@
 
   function ebayQuickAdd () {
 
-    var $targetContainer = $('.drpdwnCmp');
+    var $targetContainer = $('.drpdwnCmp, #dd_addToList').first();
     var $button = generateGenericButton('ebay');
     $targetContainer.append($button);
 
