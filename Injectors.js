@@ -231,11 +231,23 @@
 
     $targetContainer.each(function (index, element) {
 
+      var $element = $(element);
+
+      if ($element.hasClass('wl-button-added')) {
+        return;
+      }
+
+      $element.addClass('wl-button-added');
+
       var $button = $('<li id="' + buttonId + '"><a href="#" title="' + addString + '">' + addString + '</a></li>');
       $(element).append($button);
 
       createGenericIndexButtonBind(element);
     });
+
+    // since twitter adds new tweets all the time,
+    // we need to keep on checking and re-adding buttons
+    window.setTimeout(twitterIndexQuickAdd, 1000);
   }
 
   function injectQuickAddLink () {
