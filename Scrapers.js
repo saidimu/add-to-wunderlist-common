@@ -192,8 +192,16 @@
       var data = {};
       var openGraph = WL.fetchOpenGraph();
 
+      var price = $.trim($('.item-amount').first().text());
+
       data.scraper = 'etsy';
+
       data.title = ($('.title-module:visible').text() || openGraph.title);
+
+      if (price) {
+        data.title = data.title + ' (' + price + ')';
+      }
+
       data.url = (openGraph.url || window.location.href);
       data.note = ($('.description-item:visible .description').text() || openGraph.description);
       data.specialList = 'wishlist';
